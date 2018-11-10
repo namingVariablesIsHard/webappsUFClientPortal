@@ -1,4 +1,4 @@
-# Webapps UF Client Portal
+﻿# Webapps UF Client Portal
 
 Project #2 WebApps @ UF Client Portal - Group D
 
@@ -253,5 +253,5 @@ The boilerplate for the baseline folder/package structure was forked from [Sande
 
 The many further modifications that were made by our group are released under the [MIT License](https://github.com/namingVariablesIsHard/webappsUFClientPortal/blob/master/LICENSE).
 
-#Edited by Kate 11/5/18
-#Edited by Cameran 11/5/18
+### Edited by Kate 11/5/18
+### Edited by Cameran 11/5/18
