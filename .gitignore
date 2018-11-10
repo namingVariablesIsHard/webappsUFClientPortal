@@ -1,6 +1,9 @@
 .vscode
 dist
 
+# Ignore Mongolab config details
+src/server/config/config.js
+
 # Logs
 logs
 *.log
