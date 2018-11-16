@@ -249,9 +249,6 @@ Above, we have modified editor configurations. Alternatively, this can be config
 
 ### License
 
-The boilerplate for the baseline folder/package structure was forked from [Sandeep Raveesh](https://github.com/crsandeep/simple-react-full-stack) under the [ISC License](https://opensource.org/licenses/ISC).
+See License [ISC License](https://github.com/namingVariablesIsHard/webappsUFClientPortal/blob/master/LICENSE).
 
-The many further modifications that were made by our group are released under the [MIT License](https://github.com/namingVariablesIsHard/webappsUFClientPortal/blob/master/LICENSE).
-
-### Edited by Kate 11/5/18
 ### Edited by Cameran 11/5/18
