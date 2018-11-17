@@ -8,9 +8,9 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
 import Book from "@material-ui/icons/Book";
-import Propose from "@material-ui/icons/noteadd";
-import Find from "@material-ui/icons/findinpage";
-import PastProj from "@material-ui/icons/viewcarousel";
+import Propose from "@material-ui/icons/NoteAdd";
+import Find from "@material-ui/icons/FindInPage";
+import PastProj from "@material-ui/icons/ViewCarousel";
 import Survey from "@material-ui/icons/Assessment";
 // core components/views
 import DashboardPage from "../views/Dashboard/Dashboard.jsx";
