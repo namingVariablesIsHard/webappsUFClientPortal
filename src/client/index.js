@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 // import App from './pages/index';
