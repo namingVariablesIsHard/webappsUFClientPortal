@@ -42,29 +42,37 @@ class TableList extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      projectList: [],
+      teamList: [],
       // Filter must be integrated into 
       filterText: ''
     }
     this.filterUpdate = this.filterUpdate.bind(this);
-    this.initProjList();
+    this.initTeamList();
   }
 
-  initProjList = () => {
+  initTeamList = () => {
     // Replace with call to endpoint
-    var projArray = [];
+    var teamArray = [];
 
     // Example data (endpoint will not return email of member)
-    var firstProject = {teamName: "Past project 1",
+    var firstTeam = {teamName: "Team 1",
     groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
     description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
-    var secondProject = {teamName: "Past project 2",
+    var secondTeam = {teamName: "Team 2",
     groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
     description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
-    projArray.push(firstProject);
-    projArray.push(secondProject);
+    var thirdTeam = {teamName: "Team 3",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    var fourthTeam = {teamName: "Team 4",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    teamArray.push(firstTeam);
+    teamArray.push(secondTeam);
+    teamArray.push(thirdTeam);
+    teamArray.push(fourthTeam);
     
-    this.state.projectList = projArray;
+    this.state.teamList = teamArray;
   }
 
   filterUpdate(value){
@@ -73,16 +81,16 @@ class TableList extends React.Component{
 
   render(){
 
-    var projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
-    if(this.state.projectList.length > 0){
+    var teamList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
+    if(this.state.teamList.length > 0){
 
       // Filter the results
-      var filteredProjects = this.state.projectList.filter(function(element){
+      var filteredTeams = this.state.teamList.filter(function(element){
         return element.teamName.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1;
       }.bind(this));
 
       // Format the results
-      projList = filteredProjects.map(function(project){
+      teamList = filteredTeams.map(function(project){
         return(<GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
@@ -101,7 +109,7 @@ class TableList extends React.Component{
 
     return(
     <GridContainer>
-      {projList}
+      {teamList}
     </GridContainer>
     );
     }
