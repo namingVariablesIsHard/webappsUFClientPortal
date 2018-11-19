@@ -74,7 +74,7 @@ class Surveys extends React.Component {
               <CardFooter stats>
                 <div className={classes.stats}>
                   <Create />
-                  <a href="newsurvey">Complete pending surveys</a>
+                  <a href="surveys">Complete pending surveys</a>
                 </div>
               </CardFooter>
             </Card>

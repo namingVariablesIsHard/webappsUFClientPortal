@@ -26,6 +26,8 @@ import ProjectProposals from "../views/ProjectProposals/ProjectProposals.jsx";
 import FindATeam from "../views/FindATeam/FindATeam.jsx";
 import PastProjectGallery from "../views/PastProjectGallery/PastProjectGallery.jsx";
 import Surveys from "../views/Surveys/Surveys.jsx";
+import NewSurvey from "../views/Surveys/NewSurvey.jsx";
+import SurveyResults from "../views/Surveys/SurveyResults.jsx";
 
 const dashboardRoutes = [
   {
@@ -71,26 +73,33 @@ const dashboardRoutes = [
     component: PastProjectGallery
   },
   {
+    path: "/newsurvey",
+    sidebarName: "Complete a Survey",
+    navbarName: "Complete a Survey",
+    icon: BubbleChart,
+    component: NewSurvey
+  },
+  {
     path: "/surveys",
-    sidebarName: "Surveys",
-    navbarName: "Surveys",
+    sidebarName: "Survey Results",
+    navbarName: "Results of Submitted Surveys",
     icon: Survey,
     component: Surveys
   },
-  {
-    path: "/table",
-    sidebarName: "Table List",
-    navbarName: "Table List",
-    icon: "content_paste",
-    component: TableList
-  },
-  {
-    path: "/typography",
-    sidebarName: "Typography",
-    navbarName: "Typography",
-    icon: LibraryBooks,
-    component: Typography
-  },
+  // {
+  //   path: "/table",
+  //   sidebarName: "Table List",
+  //   navbarName: "Table List",
+  //   icon: "content_paste",
+  //   component: TableList
+  // },
+  // {
+  //   path: "/typography",
+  //   sidebarName: "Typography",
+  //   navbarName: "Typography",
+  //   icon: LibraryBooks,
+  //   component: Typography
+  // },
   {
     path: "/icons",
     sidebarName: "Icons",
@@ -98,27 +107,27 @@ const dashboardRoutes = [
     icon: BubbleChart,
     component: Icons
   },
-  {
-    path: "/maps",
-    sidebarName: "Maps",
-    navbarName: "Map",
-    icon: LocationOn,
-    component: Maps
-  },
-  {
-    path: "/notifications",
-    sidebarName: "Notifications",
-    navbarName: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage
-  },
-  {
-    path: "/upgrade-to-pro",
-    sidebarName: "Upgrade To PRO",
-    navbarName: "Upgrade To PRO",
-    icon: Unarchive,
-    component: UpgradeToPro
-  },
+  // {
+  //   path: "/maps",
+  //   sidebarName: "Maps",
+  //   navbarName: "Map",
+  //   icon: LocationOn,
+  //   component: Maps
+  // },
+  // {
+  //   path: "/notifications",
+  //   sidebarName: "Notifications",
+  //   navbarName: "Notifications",
+  //   icon: Notifications,
+  //   component: NotificationsPage
+  // },
+  // {
+  //   path: "/upgrade-to-pro",
+  //   sidebarName: "Upgrade To PRO",
+  //   navbarName: "Upgrade To PRO",
+  //   icon: Unarchive,
+  //   component: UpgradeToPro
+  // },
   { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];
 

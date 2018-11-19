@@ -13,7 +13,7 @@ import CardAvatar from "../../components/Card/CardAvatar.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
 
-import avatar from "../../assets/img/faces/marc.jpg";
+import avatar from "../../assets/img/faces/tim.jpg";
 
 const styles = {
   cardCategoryWhite: {
@@ -41,22 +41,42 @@ function UserProfile(props) {
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-              <p className={classes.cardCategoryWhite}>Complete your profile</p>
+            <CardHeader color="info">
+              <h2 className={classes.cardTitleWhite}>Edit Your Profile</h2>
             </CardHeader>
             <CardBody>
+              
               <GridContainer>
-                <GridItem xs={12} sm={12} md={5}>
+                <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="Company (disabled)"
-                    id="company-disabled"
+                    labelText="First Name"
+                    id="first-name"
                     formControlProps={{
                       fullWidth: true
                     }}
-                    inputProps={{
-                      disabled: true
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <CustomInput
+                    labelText="Last Name"
+                    id="last-name"
+                    formControlProps={{
+                      fullWidth: true
                     }}
+                  />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={5}>
+                  <CustomInput
+                    labelText="Company"
+                    id="company"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    // inputProps={{
+                    //   disabled: true
+                    // }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
@@ -72,26 +92,6 @@ function UserProfile(props) {
                   <CustomInput
                     labelText="Email address"
                     id="email-address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="First Name"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Last Name"
-                    id="last-name"
                     formControlProps={{
                       fullWidth: true
                     }}
@@ -129,9 +129,9 @@ function UserProfile(props) {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
+                  <InputLabel style={{ color: "#AAAAAA" }}></InputLabel>
                   <CustomInput
-                    labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+                    labelText="More Info (Optional)"
                     id="about-me"
                     formControlProps={{
                       fullWidth: true
@@ -145,7 +145,7 @@ function UserProfile(props) {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary">Update Profile</Button>
+              <Button color="warning">Update Profile</Button>
             </CardFooter>
           </Card>
         </GridItem>
@@ -157,15 +157,20 @@ function UserProfile(props) {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
+              <h6 className={classes.cardCategory}>CEO, Apple Inc</h6>
+              <h4 className={classes.cardTitle}>Tim Cook</h4>
               <p className={classes.description}>
-                Don't be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+              Timothy Donald Cook (born November 1, 1960) is an American business executive and industrial engineer. 
+              Cook is the Chief Executive Officer of Apple Inc., and previously served as the company's Chief 
+              Operating Officer under its founder Steve Jobs. Cook joined Apple in March 1998 as a senior 
+              vice president for worldwide operations, and then served as the Executive Vice President for 
+              worldwide sales and operations. He was made the Chief Executive on August 24, 2011, prior to 
+              Jobs' death in October of that year. During his tenure as the Chief Executive, he has advocated 
+              for the political reformation of international and domestic surveillance, cybersecurity, 
+              corporate taxation, American manufacturing, and environmental preservation.
               </p>
-              <Button color="primary" round>
-                Follow
+              <Button color="warning" round>
+                Update Avatar
               </Button>
             </CardBody>
           </Card>

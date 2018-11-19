@@ -4,7 +4,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridItem from "../../components/Grid/GridItem.jsx";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
-import Table from "../../components/Table/Table.jsx";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
@@ -39,74 +38,82 @@ const styles = {
   }
 };
 
-function TableList(props) {
-  const { classes } = props;
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
+class TableList extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      teamList: [],
+      // Filter must be integrated into 
+      filterText: ''
+    }
+    this.filterUpdate = this.filterUpdate.bind(this);
+    this.initTeamList();
+  }
+
+  initTeamList = () => {
+    // Replace with call to endpoint
+    var teamArray = [];
+
+    // Example data (endpoint will not return email of member)
+    var firstTeam = {teamName: "Team 1",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    var secondTeam = {teamName: "Team 2",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    var thirdTeam = {teamName: "Team 3",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    var fourthTeam = {teamName: "Team 4",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    teamArray.push(firstTeam);
+    teamArray.push(secondTeam);
+    teamArray.push(thirdTeam);
+    teamArray.push(fourthTeam);
+    
+    this.state.teamList = teamArray;
+  }
+
+  filterUpdate(value){
+    this.setState({filterText: value});
+  }
+
+  render(){
+
+    var teamList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
+    if(this.state.teamList.length > 0){
+
+      // Filter the results
+      var filteredTeams = this.state.teamList.filter(function(element){
+        return element.teamName.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1;
+      }.bind(this));
+
+      // Format the results
+      teamList = filteredTeams.map(function(project){
+        return(<GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Simple Table</h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
+            <h1 className={styles.cardTitleWhite}>{project.teamName}</h1>
           </CardHeader>
           <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
-              ]}
-            />
+              {project.groupMembers.map(function(memberSet){
+                return <p>{memberSet.name}</p>;
+              })}
+            <p>{project.description}</p>
           </CardBody>
         </Card>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card plain>
-          <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              Table on Plain Background
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["ID", "Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-                ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                [
-                  "4",
-                  "Philip Chaney",
-                  "$38,735",
-                  "Korea, South",
-                  "Overland Park"
-                ],
-                [
-                  "5",
-                  "Doris Greene",
-                  "$63,542",
-                  "Malawi",
-                  "Feldkirchen in Kärnten"
-                ],
-                ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-    </GridContainer>
-  );
-}
+        </GridItem>);
+      });
+    }
 
+    return(
+    <GridContainer>
+      {teamList}
+    </GridContainer>
+    );
+    }
+
+
+}
 export default withStyles(styles)(TableList);
