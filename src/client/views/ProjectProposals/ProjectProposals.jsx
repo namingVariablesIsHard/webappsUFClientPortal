@@ -9,6 +9,8 @@ import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 import Button from "../../components/CustomButtons/Button.jsx";
 import Grid from "@material-ui/core/Grid";
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
   cardCategoryWhite: {
@@ -99,13 +101,18 @@ class TableList extends React.Component{
               <h1 className={styles.cardTitleWhite}>{project.projTitle}</h1>
             </GridItem>
             <Grid>
-              <Button color="inherit">Edit Proposal</Button>
+              <Button>Edit Proposal
+              <Icon>edit_icon</Icon>
+              </Button>
             </Grid>
           </GridContainer>
           </CardHeader>
           <CardBody>
             <h3>{project.companyName}</h3>
             <p>{project.description}</p>
+            <Button>
+              Manage Project
+            </Button>
           </CardBody>
         </Card>
         </GridItem>);
@@ -114,6 +121,9 @@ class TableList extends React.Component{
 
     return(
     <GridContainer>
+      <Button variant="fab">
+        <AddIcon/>
+      </Button>
       {projList}
     </GridContainer>
     );
