@@ -4,7 +4,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridItem from "../../components/Grid/GridItem.jsx";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
-import Table from "../../components/Table/Table.jsx";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
@@ -49,8 +48,11 @@ class TableList extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      projectList: []
+      projectList: [],
+      // Filter must be integrated into 
+      filterText: ''
     }
+    this.filterUpdate = this.filterUpdate.bind(this);
     this.initProjList();
   }
 
@@ -58,11 +60,11 @@ class TableList extends React.Component{
     // Replace with call to endpoint
     var projArray = [];
 
-    // Example data
-    var firstProject = {projTitle: "test project 1", teamName: "Test Team",
+    // Example data (endpoint will not return email of member)
+    var firstProject = {projTitle: "Past project 1", teamName: "Test Team",
     groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
     description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
-    var secondProject = {projTitle: "test project 2", teamName: "Test Team",
+    var secondProject = {projTitle: "Past project 2", teamName: "Test Team",
     groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
     description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
     projArray.push(firstProject);
@@ -71,11 +73,22 @@ class TableList extends React.Component{
     this.state.projectList = projArray;
   }
 
+  filterUpdate(value){
+    this.setState({filterText: value});
+  }
+
   render(){
 
-    var projList = "Nothing to display... TEMP!!!"
+    var projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
     if(this.state.projectList.length > 0){
-      projList = this.state.projectList.map(function(project){
+
+      // Filter the results
+      var filteredProjects = this.state.projectList.filter(function(element){
+        return element.projTitle.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1;
+      }.bind(this));
+
+      // Format the results
+      projList = filteredProjects.map(function(project){
         return(<GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
@@ -84,7 +97,8 @@ class TableList extends React.Component{
           <CardBody>
             <h3>{project.teamName}</h3>
               {project.groupMembers.map(function(memberSet){
-                return [<p>{memberSet.name}</p>,<p>{memberSet.email}</p>];
+                //return [<p>{memberSet.name}</p>,<p>{memberSet.email}</p>];
+                return <p>{memberSet.name}</p>;
               })}
             <p>{project.description}</p>
           </CardBody>

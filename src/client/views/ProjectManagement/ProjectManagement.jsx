@@ -4,7 +4,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridItem from "../../components/Grid/GridItem.jsx";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
-import Table from "../../components/Table/Table.jsx";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
@@ -36,77 +35,84 @@ const styles = {
       fontWeight: "400",
       lineHeight: "1"
     }
-  }
+  },
+  // indentLvl0: {
+  //   margin: "0 auto"
+  // },
+  // indentLvl1: {
+  //   marginLeft: "50px"
+  // }
 };
 
-function TableList(props) {
-  const { classes } = props;
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
+class TableList extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      projectList: [],
+      // Filter must be integrated into 
+      filterText: ''
+    }
+    this.filterUpdate = this.filterUpdate.bind(this);
+    this.initProjList();
+  }
+
+  initProjList = () => {
+    // Replace with call to endpoint
+    var projArray = [];
+
+    // Example data
+    var firstProject = {projTitle: "Current project 1", teamName: "Test Team",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    var secondProject = {projTitle: "Current project 2", teamName: "Test Team",
+    groupMembers: [{name: "member1", email: "member1@email.com"}, {name: "member2", email: "member2@email.com"}, {name: "member3", email: "member3@email.com"}],
+    description: "This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team."};
+    projArray.push(firstProject);
+    projArray.push(secondProject);
+    
+    this.state.projectList = projArray;
+  }
+
+  filterUpdate(value){
+    this.setState({filterText: value});
+  }
+
+  render(){
+
+    var projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
+    if(this.state.projectList.length > 0){
+
+      // Filter the results
+      var filteredProjects = this.state.projectList.filter(function(element){
+        return element.projTitle.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1;
+      }.bind(this));
+
+      // Format the results
+      projList = filteredProjects.map(function(project){
+        return(<GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Simple Table</h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
+            <h1 className={styles.cardTitleWhite}>{project.projTitle}</h1>
           </CardHeader>
           <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
-              ]}
-            />
+            <h3>{project.teamName}</h3>
+              {project.groupMembers.map(function(memberSet){
+                return <p>{memberSet.name}</p>;
+              })}
+            <p>{project.description}</p>
           </CardBody>
         </Card>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card plain>
-          <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              Table on Plain Background
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["ID", "Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-                ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                [
-                  "4",
-                  "Philip Chaney",
-                  "$38,735",
-                  "Korea, South",
-                  "Overland Park"
-                ],
-                [
-                  "5",
-                  "Doris Greene",
-                  "$63,542",
-                  "Malawi",
-                  "Feldkirchen in Kärnten"
-                ],
-                ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-    </GridContainer>
-  );
-}
+        </GridItem>);
+      });
+    }
 
+    return(
+    <GridContainer>
+      {projList}
+    </GridContainer>
+    );
+    }
+
+
+}
 export default withStyles(styles)(TableList);
