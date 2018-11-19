@@ -131,7 +131,7 @@ const Sidebar = ({ ...props }) => {
 };
 
 Sidebar.propTypes = {
-  classes: PropTypes.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(sidebarStyle)(Sidebar);

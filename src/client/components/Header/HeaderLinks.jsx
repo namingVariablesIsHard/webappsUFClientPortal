@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import Link from 'react-router-dom';
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -41,7 +42,7 @@ class HeaderLinks extends React.Component {
     const { open } = this.state;
     return (
       <div>
-        <div className={classes.searchWrapper}>
+        {/* <div className={classes.searchWrapper}>
           <CustomInput
             formControlProps={{
               className: classes.margin + " " + classes.search
@@ -56,7 +57,8 @@ class HeaderLinks extends React.Component {
           <Button color="white" aria-label="edit" justIcon round>
             <Search />
           </Button>
-        </div>
+        </div> */}
+        <a href="dashboard" style={{ textDecoration: 'none'}} >
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
@@ -68,8 +70,8 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Dashboard</p>
           </Hidden>
-        </Button>
-        <div className={classes.manager}>
+        </Button></a>
+        {/* <div className={classes.manager}>
           <Button
             buttonRef={node => {
               this.anchorEl = node;
@@ -117,7 +119,7 @@ class HeaderLinks extends React.Component {
                         onClick={this.handleClose}
                         className={classes.dropdownItem}
                       >
-                        Mike John responded to your email
+                        Project 2 Needs your attention
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
@@ -129,7 +131,7 @@ class HeaderLinks extends React.Component {
                         onClick={this.handleClose}
                         className={classes.dropdownItem}
                       >
-                        You're now friend with Andrew
+                        You updated your profile
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
@@ -149,7 +151,8 @@ class HeaderLinks extends React.Component {
               </Grow>
             )}
           </Poppers>
-        </div>
+        </div> */}
+        <a href="user">
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
@@ -162,6 +165,7 @@ class HeaderLinks extends React.Component {
             <p className={classes.linkText}>Profile</p>
           </Hidden>
         </Button>
+        </a>
       </div>
     );
   }
