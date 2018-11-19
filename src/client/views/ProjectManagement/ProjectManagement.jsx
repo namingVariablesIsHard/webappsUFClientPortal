@@ -7,6 +7,10 @@ import GridContainer from "../../components/Grid/GridContainer.jsx";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
+import Button from "../../components/CustomButtons/Button.jsx";
+import Grid from "@material-ui/core/Grid";
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
   cardCategoryWhite: {
@@ -92,7 +96,16 @@ class TableList extends React.Component{
         return(<GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h1 className={styles.cardTitleWhite}>{project.projTitle}</h1>
+          <GridContainer>
+            <GridItem>
+              <h1 className={styles.cardTitleWhite}>{project.projTitle}</h1>
+            </GridItem>
+            <Grid>
+              <Button>Edit Proposal
+                <Icon>edit_icon</Icon>
+              </Button>
+            </Grid>
+          </GridContainer>
           </CardHeader>
           <CardBody>
             <h3>{project.teamName}</h3>
@@ -100,6 +113,9 @@ class TableList extends React.Component{
                 return <p>{memberSet.name}</p>;
               })}
             <p>{project.description}</p>
+            <Button>
+              Manage Project
+            </Button>
           </CardBody>
         </Card>
         </GridItem>);
