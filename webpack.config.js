@@ -7,19 +7,19 @@ const outputDirectory = 'dist';
 module.exports = {
   entry: ['babel-polyfill', './src/client/index.js'],
   output: {
-    // path: path.join(__dirname, outputDirectory),
-    path: path.resolve(__dirname, outputDirectory),
-    filename: 'bundle.js',
-    publicPath: '/'
+    // path: path.resolve(__dirname, outputDirectory),
+    path: path.join(__dirname, outputDirectory),
+    filename: 'bundle.js'// ,
+    // publicPath: '/*'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader'
-        ],
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/,
@@ -42,6 +42,8 @@ module.exports = {
       '/api': 'http://localhost:8080'
     },
     historyApiFallback: true,
+    contentBase: './',
+    hot: true
   },
   plugins: [
     new CleanWebpackPlugin([outputDirectory]),
