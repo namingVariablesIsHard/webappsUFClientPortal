@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
                 <CardIcon color="success">
                 <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Projects Needing a Team</p>
+                <p className={classes.cardCategory}>Project Proposals Needing a Team</p>
                 <h3 className={classes.cardTitle}>3</h3>
               </CardHeader>
               <CardFooter stats>
@@ -137,13 +137,13 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <Icon>warning</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Project Issues Needing Attention</p>
+                <p className={classes.cardCategory}>Projects In Progress</p>
                 <h3 className={classes.cardTitle}>4</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <LocalOffer />
-                  <a href="currentprojects">Manage Projects</a>
+                  <a href="currentprojects">Current Projects</a>
                 </div>
               </CardFooter>
             </Card>
@@ -160,10 +160,10 @@ class Dashboard extends React.Component {
               <CardFooter stats>
                 <div className={classes.stats}>
                   <FindInPage />  
-                  <a href="surveys"> View Student Surveys</a>
-                  {' '}
+                  <a href="surveys">Surveys</a>
+                  {/* {' '}
                   <Update />
-                  <a href="surveys"> Complete a Survey</a>
+                  <a href="surveyresults">View Results</a> */}
                 </div>
               </CardFooter>
             </Card>

@@ -136,9 +136,16 @@ class TableList extends React.Component {
             <CardBody>
               <h4 className={classes.cardTitle}>{project.companyName}</h4>
               <p>{project.description}</p>
-              <Button color="rose">
-                Edit Proposal
-              </Button>
+              <a href="editproposal">
+                <Button color="rose">
+                  Edit Proposal
+                </Button>
+              </a>{' '}
+              <a href="findateam">
+                <Button color="info">
+                  Find a Team
+                </Button>
+              </a>
             </CardBody>
           </Card>
         </GridItem>
@@ -151,14 +158,14 @@ class TableList extends React.Component {
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
-                <a href="user">
+                <a href="newproposal">
                   <Icon>add</Icon>
                 </a>
               </CardIcon>
               <p className={classes.cardCategory}>Propose a Project</p>
               <h3 className={classes.cardTitle}>
                 {' '}
-                <a href="user">New</a>
+                <a href="newproposal">New</a>
               </h3>
             </CardHeader>
           </Card>

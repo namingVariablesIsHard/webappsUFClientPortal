@@ -173,9 +173,11 @@ class TableList extends React.Component {
             <CardBody>
               {project.groupMembers.map(memberSet => <h4 className={classes.cardTitle}>{memberSet.name}</h4>)}
               <p>{project.description}</p>
-              <Button color="info">
-                Contact Team
-              </Button>{' '}
+              <a href="contactteam">
+                <Button color="info">
+                  Contact Team
+                </Button>
+              </a>{' '}
               <TextField
                 id="assign-team-selector"
                 select

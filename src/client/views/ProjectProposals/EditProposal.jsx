@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
+import Grid from '@material-ui/core/Grid';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
 import Card from '../../components/Card/Card.jsx';
@@ -10,7 +13,6 @@ import CardHeader from '../../components/Card/CardHeader.jsx';
 import CardBody from '../../components/Card/CardBody.jsx';
 import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
-import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
 
 const styles = {
   cardCategoryWhite: {
@@ -25,14 +27,6 @@ const styles = {
       color: '#FFFFFF'
     }
   },
-  cardCategory: {
-    color: "#999999",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    paddingTop: "10px",
-    marginBottom: "0"
-  },
   cardTitle: {
     color: "#3C4858",
     marginTop: "0px",
@@ -46,6 +40,14 @@ const styles = {
       fontWeight: "400",
       lineHeight: "1"
     }
+  },
+  cardCategory: {
+    color: "#999999",
+    margin: "0",
+    fontSize: "14px",
+    marginTop: "0",
+    paddingTop: "10px",
+    marginBottom: "0"
   },
   cardTitleWhite: {
     color: '#FFFFFF',
@@ -62,12 +64,11 @@ const styles = {
       lineHeight: '1'
     }
   },
-  // indentLvl0: {
-  //   margin: "0 auto"
-  // },
-  // indentLvl1: {
-  //   marginLeft: "50px"
-  // }
+  headerButton: {
+    float: 'right',
+    marginLeft: '20000px',
+    color: '#000000'
+  }
 };
 
 class TableList extends React.Component {
@@ -86,21 +87,25 @@ class TableList extends React.Component {
     // Replace with call to endpoint
     const projArray = [];
 
-    // Example data (endpoint will not return email of member)
+    // Example data (Note that the db should actually store as much info for the project as possible, but endpoints should only return what is necessary)
     const firstProject = {
-      projTitle: 'Past project 1',
-      teamName: 'Test Team',
-      groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
+      projTitle: 'Proposed project 1',
+      companyName: 'Sample Inc',
       description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
     };
     const secondProject = {
-      projTitle: 'Past project 2',
-      teamName: 'Test Team',
-      groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
-      description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
+      projTitle: 'Proposed project 2',
+      companyName: 'Fake LLC',
+      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
+    };
+    const thirdProject = {
+      projTitle: 'Proposed project 3',
+      companyName: 'Test Co.',
+      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
     };
     projArray.push(firstProject);
     projArray.push(secondProject);
+    projArray.push(thirdProject);
 
     this.state.projectList = projArray;
   }
@@ -121,16 +126,19 @@ class TableList extends React.Component {
       projList = filteredProjects.map(project => (
         <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader color="info">
-              <h3 className={classes.cardTitleWhite}>{project.projTitle}</h3>
+            <CardHeader color="primary">
+              <GridContainer>
+                <GridItem>
+                  <h3 className={classes.cardTitleWhite}>{project.projTitle}</h3>
+                </GridItem>
+              </GridContainer>
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>{project.teamName}</h4>
-              {project.groupMembers.map(memberSet => <p>{memberSet.name}</p>)}
-              <p className={classes.cardCategory}>{project.description}</p>
-              <a href="viewpastproject">
-                <Button color="primary">
-                  View Project Details
+              <h4 className={classes.cardTitle}>{project.companyName}</h4>
+              <p>{project.description}</p>
+              <a href="editproposal">
+                <Button color="rose">
+                  Edit Proposal
                 </Button>
               </a>
             </CardBody>
@@ -143,12 +151,17 @@ class TableList extends React.Component {
       <GridContainer>
         <GridItem xs={2} sm={2} md={2}>
           <Card>
-            <CardHeader color="rose" stats icon>
-              <CardIcon color="rose">
-                <SentimentSatisfiedAlt />
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <a href="newproposal">
+                  <Icon>add</Icon>
+                </a>
               </CardIcon>
-              <p className={classes.cardCategory}>Past Projects</p>
-              <h3 className={classes.cardTitle}> {this.state.projectList.length}</h3>
+              <p className={classes.cardCategory}>Propose a Project</p>
+              <h3 className={classes.cardTitle}>
+                {' '}
+                <a href="newproposal">New</a>
+              </h3>
             </CardHeader>
           </Card>
         </GridItem>

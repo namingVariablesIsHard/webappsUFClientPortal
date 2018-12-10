@@ -128,11 +128,9 @@ class TableList extends React.Component {
               <h4 className={classes.cardTitle}>{project.teamName}</h4>
               {project.groupMembers.map(memberSet => <p>{memberSet.name}</p>)}
               <p className={classes.cardCategory}>{project.description}</p>
-              <a href="viewpastproject">
-                <Button color="primary">
-                  View Project Details
-                </Button>
-              </a>
+              <Button color="primary">
+                View Project Details
+              </Button>
             </CardBody>
           </Card>
         </GridItem>
