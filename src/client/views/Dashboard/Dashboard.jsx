@@ -40,6 +40,8 @@ import CardFooter from '../../components/Card/CardFooter.jsx';
 
 import { bugs, website, server } from '../../variables/general.jsx';
 
+// const userInfo = require('user-info');
+
 import {
   dailySalesChart,
   emailsSubscriptionChart,

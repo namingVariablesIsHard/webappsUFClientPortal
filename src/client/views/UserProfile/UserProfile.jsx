@@ -1,36 +1,45 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import InputLabel from "@material-ui/core/InputLabel";
+import withStyles from '@material-ui/core/styles/withStyles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 // core components
-import GridItem from "../../components/Grid/GridItem.jsx";
-import GridContainer from "../../components/Grid/GridContainer.jsx";
-import CustomInput from "../../components/CustomInput/CustomInput.jsx";
-import Button from "../../components/CustomButtons/Button.jsx";
-import Card from "../../components/Card/Card.jsx";
-import CardHeader from "../../components/Card/CardHeader.jsx";
-import CardAvatar from "../../components/Card/CardAvatar.jsx";
-import CardBody from "../../components/Card/CardBody.jsx";
-import CardFooter from "../../components/Card/CardFooter.jsx";
+import Icon from '@material-ui/core/Icon';
+import Create from '@material-ui/icons/Create';
+import GridItem from '../../components/Grid/GridItem.jsx';
+import GridContainer from '../../components/Grid/GridContainer.jsx';
+import CustomInput from '../../components/CustomInput/CustomInput.jsx';
+import Button from '../../components/CustomButtons/Button.jsx';
+import Card from '../../components/Card/Card.jsx';
+import CardHeader from '../../components/Card/CardHeader.jsx';
+import CardAvatar from '../../components/Card/CardAvatar.jsx';
+import CardBody from '../../components/Card/CardBody.jsx';
+import CardFooter from '../../components/Card/CardFooter.jsx';
+import CardIcon from '../../components/Card/CardIcon.jsx';
 
-import avatar from "../../assets/img/faces/tim.jpg";
+import avatar from '../../assets/img/faces/tim.jpg';
+
+import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx';
 
 const styles = {
   cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    marginBottom: "0"
+    color: 'rgba(255,255,255,.62)',
+    margin: '0',
+    fontSize: '14px',
+    marginTop: '0',
+    marginBottom: '0'
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
+    color: '#FFFFFF',
+    marginTop: '0px',
+    minHeight: 'auto',
+    fontWeight: '300',
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none"
+    marginBottom: '3px',
+    textDecoration: 'none'
   }
 };
 
@@ -39,13 +48,33 @@ function UserProfile(props) {
   return (
     <div>
       <GridContainer>
+        <GridItem xs={3} sm={3} md={3}>
+          <Card>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <img src={avatar} width="150" alt="..." />
+              </CardIcon>
+              <p className={classes.cardCategory}>Welcome Back!</p>
+              <h3 className={classes.cardTitle}> User</h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <Create />
+                <a href="user"> Change your avatar</a>
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+      </GridContainer>
+
+      <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="info">
               <h2 className={classes.cardTitleWhite}>Edit Your Profile</h2>
             </CardHeader>
             <CardBody>
-              
+
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
@@ -129,9 +158,9 @@ function UserProfile(props) {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}></InputLabel>
+                  <InputLabel style={{ color: '#AAAAAA' }} />
                   <CustomInput
-                    labelText="More Info (Optional)"
+                    labelText="Description (Optional)"
                     id="about-me"
                     formControlProps={{
                       fullWidth: true
@@ -145,11 +174,11 @@ function UserProfile(props) {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="warning">Update Profile</Button>
+              <Button color="warning">Save Changes</Button>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
+        {/* <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
@@ -160,13 +189,13 @@ function UserProfile(props) {
               <h6 className={classes.cardCategory}>CEO, Apple Inc</h6>
               <h4 className={classes.cardTitle}>Tim Cook</h4>
               <p className={classes.description}>
-              Timothy Donald Cook (born November 1, 1960) is an American business executive and industrial engineer. 
-              Cook is the Chief Executive Officer of Apple Inc., and previously served as the company's Chief 
-              Operating Officer under its founder Steve Jobs. Cook joined Apple in March 1998 as a senior 
-              vice president for worldwide operations, and then served as the Executive Vice President for 
-              worldwide sales and operations. He was made the Chief Executive on August 24, 2011, prior to 
-              Jobs' death in October of that year. During his tenure as the Chief Executive, he has advocated 
-              for the political reformation of international and domestic surveillance, cybersecurity, 
+              Timothy Donald Cook (born November 1, 1960) is an American business executive and industrial engineer.
+              Cook is the Chief Executive Officer of Apple Inc., and previously served as the company's Chief
+              Operating Officer under its founder Steve Jobs. Cook joined Apple in March 1998 as a senior
+              vice president for worldwide operations, and then served as the Executive Vice President for
+              worldwide sales and operations. He was made the Chief Executive on August 24, 2011, prior to
+              Jobs' death in October of that year. During his tenure as the Chief Executive, he has advocated
+              for the political reformation of international and domestic surveillance, cybersecurity,
               corporate taxation, American manufacturing, and environmental preservation.
               </p>
               <Button color="warning" round>
@@ -174,10 +203,14 @@ function UserProfile(props) {
               </Button>
             </CardBody>
           </Card>
-        </GridItem>
+        </GridItem> */}
       </GridContainer>
     </div>
   );
 }
 
-export default withStyles(styles)(UserProfile);
+UserProfile.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(dashboardStyle)(UserProfile);
