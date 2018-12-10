@@ -14,8 +14,6 @@ import Accessibility from '@material-ui/icons/Accessibility';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx';
-
 const styles = theme => ({
   cardCategoryWhite: {
     '&,& a,& a:hover,& a:focus': {
