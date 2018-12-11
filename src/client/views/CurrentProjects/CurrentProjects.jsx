@@ -134,7 +134,7 @@ class TableList extends React.Component {
             <CardBody>
               <h4 className={classes.cardTitle}>{project.teamName}</h4>
               {project.groupMembers.map((memberSet) =>{
-                return <p>{memberSet.name}</p>;
+                return <p>{memberSet.name} - <a href="mailto:{memberSet.email}">{memberSet.email}</a></p>;
               })}
               <p className={classes.cardCategory}>{project.description}</p>
               <a href="projectmanagement">
@@ -155,7 +155,7 @@ class TableList extends React.Component {
 
     return (
       <GridContainer>
-        <GridItem xs={2} sm={2} md={2}>
+        <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">

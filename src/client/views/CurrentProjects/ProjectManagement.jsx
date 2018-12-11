@@ -114,7 +114,7 @@ class ProjectManagement extends React.Component {
       // Format the results
       projList = filteredProjects.map(project => (
         <GridContainer>
-          <GridItem xs={12} sm={12} md={12}>
+          <GridItem xs={6} sm={12} md={12}>
             <Card>
               <CardHeader color="info">
                 <GridContainer>
@@ -154,7 +154,7 @@ class ProjectManagement extends React.Component {
               </CardBody>
             </Card>
           </GridItem>
-          <GridItem xs={12} sm={12} md={12}>
+          <GridItem xs={7} sm={12} md={12}>
             <Card>
               <CardHeader color="success">
                 <h3 className={classes.cardTitleWhite}>Features In Progress</h3>

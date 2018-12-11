@@ -182,12 +182,12 @@ class Dashboard extends React.Component {
               <CardBody>
                 <Table
                   tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Team Members', 'Completion %', 'Due by', 'Days Remaining', 'Go to']}
+                  tableHead={['#', 'Name', 'Team Members', 'Started', 'Due by', 'Days Remaining', 'Go to']}
                   tableData={[
-                    ['1', 'Environmental Cleanup', '3', '36%', 'December 5th', '31', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['2', 'Fishing Location Detection', '4', '87%', 'February 14th', '110', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['3', 'Electronic Recycle Program', '0', '0%', 'December 30th', '45', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['4', 'National Defense Spending Tracker', '2', '14%', 'January 7th', '54', <a href='currentprojects'> <KeyboardArrowRight /></a>]
+                    ['1', 'Environmental Cleanup', '3', 'June 31st', 'December 5th', '31', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['2', 'Fishing Location Detection', '4', 'September 15th', 'February 14th', '110', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['3', 'Electronic Recycle Program', '0', 'October 1st', 'December 30th', '45', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['4', 'National Defense Spending Tracker', '2', 'November 2nd', 'January 7th', '54', <a href='currentprojects'> <KeyboardArrowRight /></a>]
                   ]}
                 />
               </CardBody>
@@ -207,7 +207,7 @@ class Dashboard extends React.Component {
               <CardBody>
                 <Table
                   tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Estimated Members', 'Estimated Size', 'Need by', 'Start by', 'Go to']}
+                  tableHead={['#', 'Name', 'Estimated Members', 'Workload', 'Need by', 'Start by', 'Go to']}
                   tableData={[
                     ['1', 'Candy Preference Survey', '3', 'Medium', 'December 24th', 'November 18th',<a href='projectproposals'> <KeyboardArrowRight /></a>],
                     ['2', 'Home Improvement Resource Finder', '4', 'Large', 'February 2nd', 'December 1st', <a href='projectproposals'> <KeyboardArrowRight /></a>],

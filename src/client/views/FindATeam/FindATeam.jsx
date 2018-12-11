@@ -211,7 +211,7 @@ class TableList extends React.Component {
 
     return (
       <GridContainer>
-        <GridItem xs={2} sm={2} md={2}>
+        <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
