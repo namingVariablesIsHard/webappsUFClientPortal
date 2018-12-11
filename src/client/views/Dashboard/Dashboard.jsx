@@ -40,6 +40,8 @@ import CardFooter from '../../components/Card/CardFooter.jsx';
 
 import { bugs, website, server } from '../../variables/general.jsx';
 
+// const userInfo = require('user-info');
+
 import {
   dailySalesChart,
   emailsSubscriptionChart,
@@ -118,7 +120,7 @@ class Dashboard extends React.Component {
                 <CardIcon color="success">
                 <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Projects Needing a Team</p>
+                <p className={classes.cardCategory}>Project Proposals Needing a Team</p>
                 <h3 className={classes.cardTitle}>3</h3>
               </CardHeader>
               <CardFooter stats>
@@ -135,13 +137,13 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <Icon>warning</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Project Issues Needing Attention</p>
+                <p className={classes.cardCategory}>Projects In Progress</p>
                 <h3 className={classes.cardTitle}>4</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <LocalOffer />
-                  <a href="currentprojects">Manage Projects</a>
+                  <a href="currentprojects">Current Projects</a>
                 </div>
               </CardFooter>
             </Card>
@@ -158,10 +160,10 @@ class Dashboard extends React.Component {
               <CardFooter stats>
                 <div className={classes.stats}>
                   <FindInPage />  
-                  <a href="surveys"> View Student Surveys</a>
-                  {' '}
+                  <a href="surveys">Surveys</a>
+                  {/* {' '}
                   <Update />
-                  <a href="surveys"> Complete a Survey</a>
+                  <a href="surveyresults">View Results</a> */}
                 </div>
               </CardFooter>
             </Card>
@@ -180,12 +182,12 @@ class Dashboard extends React.Component {
               <CardBody>
                 <Table
                   tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Team Members', 'Completion %', 'Due by', 'Days Remaining', 'Go to']}
+                  tableHead={['#', 'Name', 'Team Members', 'Started', 'Due by', 'Days Remaining', 'Go to']}
                   tableData={[
-                    ['1', 'Environmental Cleanup', '3', '36%', 'December 5th', '31', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['2', 'Fishing Location Detection', '4', '87%', 'February 14th', '110', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['3', 'Electronic Recycle Program', '0', '0%', 'December 30th', '45', <a href='currentprojects'> <KeyboardArrowRight /></a>],
-                    ['4', 'National Defense Spending Tracker', '2', '14%', 'January 7th', '54', <a href='currentprojects'> <KeyboardArrowRight /></a>]
+                    ['1', 'Environmental Cleanup', '3', 'June 31st', 'December 5th', '31', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['2', 'Fishing Location Detection', '4', 'September 15th', 'February 14th', '110', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['3', 'Electronic Recycle Program', '0', 'October 1st', 'December 30th', '45', <a href='currentprojects'> <KeyboardArrowRight /></a>],
+                    ['4', 'National Defense Spending Tracker', '2', 'November 2nd', 'January 7th', '54', <a href='currentprojects'> <KeyboardArrowRight /></a>]
                   ]}
                 />
               </CardBody>
@@ -205,7 +207,7 @@ class Dashboard extends React.Component {
               <CardBody>
                 <Table
                   tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Estimated Members', 'Estimated Size', 'Need by', 'Start by', 'Go to']}
+                  tableHead={['#', 'Name', 'Estimated Members', 'Workload', 'Need by', 'Start by', 'Go to']}
                   tableData={[
                     ['1', 'Candy Preference Survey', '3', 'Medium', 'December 24th', 'November 18th',<a href='projectproposals'> <KeyboardArrowRight /></a>],
                     ['2', 'Home Improvement Resource Finder', '4', 'Large', 'February 2nd', 'December 1st', <a href='projectproposals'> <KeyboardArrowRight /></a>],

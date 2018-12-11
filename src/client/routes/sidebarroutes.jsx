@@ -22,14 +22,9 @@ import Maps from "../views/Maps/Maps.jsx";
 import NotificationsPage from "../views/Notifications/Notifications.jsx";
 import UpgradeToPro from "../views/UpgradeToPro/UpgradeToPro.jsx";
 import CurrentProjects from "../views/CurrentProjects/CurrentProjects.jsx";
-import ProjectManagement from "../views/CurrentProjects/ProjectManagement.jsx";
 import ProjectProposals from "../views/ProjectProposals/ProjectProposals.jsx";
-import NewProposal from "../views/ProjectProposals/NewProposal.jsx";
-import EditProposal from "../views/ProjectProposals/EditProposal.jsx";
 import FindATeam from "../views/FindATeam/FindATeam.jsx";
-import ContactTeam from "../views/ContactTeam/ContactTeam.jsx";
 import PastProjectGallery from "../views/PastProjectGallery/PastProjectGallery.jsx";
-import ViewPastProject from "../views/PastProjectGallery/ViewPastProject.jsx";
 import Surveys from "../views/Surveys/Surveys.jsx";
 import NewSurvey from "../views/Surveys/NewSurvey.jsx";
 import SurveyResults from "../views/Surveys/SurveyResults.jsx";
@@ -57,32 +52,11 @@ const dashboardRoutes = [
     component: CurrentProjects
   },
   {
-    path: "/projectmanagement",
-    sidebarName: "Project Management",
-    navbarName: "Manage Project",
-    icon: Book,
-    component: ProjectManagement
-  },
-  {
     path: "/projectproposals",
     sidebarName: "Project Proposals",
     navbarName: "Propose a Project",
     icon: Propose,
     component: ProjectProposals
-  },
-  {
-    path: "/newproposal",
-    sidebarName: "New Proposal",
-    navbarName: "Create a New Proposal",
-    icon: Propose,
-    component: NewProposal
-  },
-  {
-    path: "/editproposal",
-    sidebarName: "Edit Proposal",
-    navbarName: "Edit a Proposal",
-    icon: Propose,
-    component: EditProposal
   },
   {
     path: "/findateam",
@@ -92,46 +66,25 @@ const dashboardRoutes = [
     component: FindATeam
   },
   {
-    path: "/contactteam",
-    sidebarName: "Contact Team",
-    navbarName: "Contact a Team",
-    icon: Find,
-    component: ContactTeam
-  },
-  {
     path: "/pastprojectgallery",
     sidebarName: "Past Projects",
     navbarName: "Gallery of Past Projects",
     icon: PastProj,
     component: PastProjectGallery
   },
-  {
-    path: "/viewpastproject",
-    sidebarName: "View Past Project",
-    navbarName: "View Past Project",
-    icon: PastProj,
-    component: ViewPastProject
-  },
-  {
-    path: "/newsurvey",
-    sidebarName: "Complete a Survey",
-    navbarName: "Complete a Survey",
-    icon: BubbleChart,
-    component: NewSurvey
-  },
+//   {
+//     path: "/newsurvey",
+//     sidebarName: "Complete a Survey",
+//     navbarName: "Complete a Survey",
+//     icon: BubbleChart,
+//     component: NewSurvey
+//   },
   {
     path: "/surveys",
     sidebarName: "Surveys",
     navbarName: "Survey Management",
     icon: Survey,
     component: Surveys
-  },
-  {
-    path: "/surveyresults",
-    sidebarName: "Survey Results",
-    navbarName: "Results of Submitted Surveys",
-    icon: Survey,
-    component: SurveyResults
   },
   // {
   //   path: "/table",
@@ -147,13 +100,13 @@ const dashboardRoutes = [
   //   icon: LibraryBooks,
   //   component: Typography
   // },
-  {
-    path: "/icons",
-    sidebarName: "Icons",
-    navbarName: "Icons",
-    icon: BubbleChart,
-    component: Icons
-  },
+//   {
+//     path: "/icons",
+//     sidebarName: "Icons",
+//     navbarName: "Icons",
+//     icon: BubbleChart,
+//     component: Icons
+//   },
   // {
   //   path: "/maps",
   //   sidebarName: "Maps",

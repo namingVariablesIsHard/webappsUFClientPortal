@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
+import Grid from '@material-ui/core/Grid';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
 import Card from '../../components/Card/Card.jsx';
@@ -10,7 +13,6 @@ import CardHeader from '../../components/Card/CardHeader.jsx';
 import CardBody from '../../components/Card/CardBody.jsx';
 import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
-import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
 
 const styles = {
   cardCategoryWhite: {
@@ -82,19 +84,21 @@ class TableList extends React.Component {
     this.initProjList();
   }
 
+  // const { classes } = this.props;
+
   initProjList = () => {
     // Replace with call to endpoint
     const projArray = [];
 
-    // Example data (endpoint will not return email of member)
+    // Example data
     const firstProject = {
-      projTitle: 'Past project 1',
+      projTitle: 'Current project 1',
       teamName: 'Test Team',
       groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
       description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
     };
     const secondProject = {
-      projTitle: 'Past project 2',
+      projTitle: 'Current project 2',
       teamName: 'Test Team',
       groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
       description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
@@ -111,30 +115,40 @@ class TableList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     let projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
     if (this.state.projectList.length > 0) {
       // Filter the results
       const filteredProjects = this.state.projectList.filter(element => element.projTitle.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1);
 
-      // Format the results
+      // Format the results  TODO: specific project URL
       projList = filteredProjects.map(project => (
         <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader color="info">
-              <h3 className={classes.cardTitleWhite}>{project.projTitle}</h3>
+            <CardHeader color="rose">
+              <GridContainer>
+                <GridItem>
+                  <h3 className={classes.cardTitleWhite}>{project.projTitle}</h3>
+                </GridItem>
+              </GridContainer>
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>{project.teamName}</h4>
-              {project.groupMembers.map(memberSet => <p>{memberSet.name}</p>)}
+              {project.groupMembers.map((memberSet) =>{
+                return <p>{memberSet.name} - <a href="mailto:{memberSet.email}">{memberSet.email}</a></p>;
+              })}
               <p className={classes.cardCategory}>{project.description}</p>
-              <a href="viewpastproject">
+              <a href="projectmanagement">
                 <Button color="primary">
-                  View Project Details
+                  Manage Project
+                </Button>
+              </a>{' '}
+              <a href="contactteam">
+                <Button color="info">
+                  Contact Team
                 </Button>
               </a>
             </CardBody>
-          </Card>
+          </Card> 
         </GridItem>
       ));
     }
@@ -143,11 +157,11 @@ class TableList extends React.Component {
       <GridContainer>
         <GridItem xs={12} sm={6} md={3}>
           <Card>
-            <CardHeader color="rose" stats icon>
-              <CardIcon color="rose">
-                <SentimentSatisfiedAlt />
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <Icon>spa</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Past Projects</p>
+              <p className={classes.cardCategory}>Current Projects</p>
               <h3 className={classes.cardTitle}> {this.state.projectList.length}</h3>
             </CardHeader>
           </Card>
@@ -157,4 +171,9 @@ class TableList extends React.Component {
     );
   }
 }
+
+TableList.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 export default withStyles(styles)(TableList);

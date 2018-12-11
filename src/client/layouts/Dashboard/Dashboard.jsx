@@ -13,6 +13,7 @@ import Footer from "../../components/Footer/Footer.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 import dashboardRoutes from "../../routes/dashboard.jsx";
+import sidebarRoutes from "../../routes/sidebarroutes.jsx";
 
 import dashboardStyle from "../../assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
@@ -70,7 +71,7 @@ class App extends React.Component {
     return (
       <div className={classes.wrapper}>
         <Sidebar
-          routes={dashboardRoutes}
+          routes={sidebarRoutes}
           logoText={"Client Portal"}
           logo={logo}
           image={image}
@@ -81,7 +82,7 @@ class App extends React.Component {
         />
         <div className={classes.mainPanel} ref="mainPanel">
           <Header
-            routes={dashboardRoutes}
+            routes={sidebarRoutes}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
