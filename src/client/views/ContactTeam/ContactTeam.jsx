@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // @material-ui/core components
@@ -20,9 +21,15 @@ import CardBody from '../../components/Card/CardBody.jsx';
 import CardFooter from '../../components/Card/CardFooter.jsx';
 import CardIcon from '../../components/Card/CardIcon.jsx';
 
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
 import avatar from '../../assets/img/faces/tim.jpg';
 
-const styles = {
+import Message from './Message.js';
+import ChatAppStyle from './ChatApp.css';
+
+const styles = theme => ({
   cardCategoryWhite: {
     color: 'rgba(255,255,255,.62)',
     margin: '0',
@@ -37,6 +44,11 @@ const styles = {
     marginTop: "0",
     paddingTop: "10px",
     marginBottom: "0"
+  },
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
   },
   cardTitle: {
     color: "#3C4858",
@@ -61,176 +73,137 @@ const styles = {
     marginBottom: '3px',
     textDecoration: 'none'
   }
-};
+});
 
-function UserProfile(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <GridContainer>
-        <GridItem xs={3} sm={3} md={3}>
-          <Card>
-            <CardHeader color="warning" stats icon>
-              <CardIcon color="warning">
-                <img src={avatar} width="150" alt="..." />
-              </CardIcon>
-              <p className={classes.cardCategory}>Welcome Back!</p>
-              <h3 className={classes.cardTitle}> User</h3>
-            </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <Create />
-                <a href="user"> Change your avatar</a>
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-      </GridContainer>
+// function ContactTeam(props) {
+//   const { classes } = props;
+//   return (
+//     <div>
+//       <Paper className={classes.root} elevation={1}>
+//         <Typography variant="h5" component="h3">
+//           This is a sheet of paper.
+//         </Typography>
+//         <Typography component="p">
+//           Paper can be used to build surface or other elements for your application.
+//         </Typography>
+//         <div className="chatroom">
+//                 <h3>Chilltime</h3>
+//                 <ul className="chats" ref="chats">
+//                     {
+//                         chats.map((chat) => 
+//                             <Message chat={chat} user={username} />
+//                         )
+//                     }
+//                 </ul>
+//                 <form className="input" onSubmit={(e) => this.submitMessage(e)}>
+//                     <input type="text" ref="msg" />
+//                     <input type="submit" value="Submit" />
+//                 </form>
+//             </div>
+//       </Paper>
+//     </div>
+//   );
+// }
 
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={8}>
-          <Card>
-            <CardHeader color="info">
-              <h2 className={classes.cardTitleWhite}>Edit Your Profile</h2>
-            </CardHeader>
-            <CardBody>
+// ContactTeam.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="First Name"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Last Name"
-                    id="last-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={5}>
-                  <CustomInput
-                    labelText="Company"
-                    id="company"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    // inputProps={{
-                    //   disabled: true
-                    // }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                  <CustomInput
-                    labelText="Username"
-                    id="username"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Email address"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="City"
-                    id="city"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Country"
-                    id="country"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Postal Code"
-                    id="postal-code"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: '#AAAAAA' }} />
-                  <CustomInput
-                    labelText="Description (Optional)"
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-            </CardBody>
-            <CardFooter>
-              <Button color="warning">Save Changes</Button>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        {/* <GridItem xs={12} sm={12} md={4}>
-          <Card profile>
-            <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO, Apple Inc</h6>
-              <h4 className={classes.cardTitle}>Tim Cook</h4>
-              <p className={classes.description}>
-              Timothy Donald Cook (born November 1, 1960) is an American business executive and industrial engineer.
-              Cook is the Chief Executive Officer of Apple Inc., and previously served as the company's Chief
-              Operating Officer under its founder Steve Jobs. Cook joined Apple in March 1998 as a senior
-              vice president for worldwide operations, and then served as the Executive Vice President for
-              worldwide sales and operations. He was made the Chief Executive on August 24, 2011, prior to
-              Jobs' death in October of that year. During his tenure as the Chief Executive, he has advocated
-              for the political reformation of international and domestic surveillance, cybersecurity,
-              corporate taxation, American manufacturing, and environmental preservation.
-              </p>
-              <Button color="warning" round>
-                Update Avatar
-              </Button>
-            </CardBody>
-          </Card>
-        </GridItem> */}
-      </GridContainer>
-    </div>
-  );
+
+class ContactTeam extends React.Component {
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          chats: [{
+              username: "Kevin Hsu",
+              content: <p>Hello World!</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "Alice Chen",
+              content: <p>Love it! :heart:</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "Kevin Hsu",
+              content: <p>Check out my Github at https://github.com/WigoHunter</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "KevHs",
+              content: <p>Lorem ipsum dolor sit amet, nibh ipsum. Cum class sem inceptos incidunt sed sed. Tempus wisi enim id, arcu sed lectus aliquam, nulla vitae est bibendum molestie elit risus.</p>,
+              img: "http://i.imgur.com/ARbQZix.jpg",
+          }, {
+              username: "Kevin Hsu",
+              content: <p>So</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "Kevin Hsu",
+              content: <p>Chilltime is going to be an app for you to view videos with friends</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "Kevin Hsu",
+              content: <p>You can sign-up now to try out our private beta!</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }, {
+              username: "Alice Chen",
+              content: <p>Definitely! Sounds great!</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }]
+      };
+
+      this.submitMessage = this.submitMessage.bind(this);
+  }
+
+  componentDidMount() {
+      this.scrollToBot();
+  }
+
+  componentDidUpdate() {
+      this.scrollToBot();
+  }
+
+  scrollToBot() {
+      ReactDOM.findDOMNode(this.refs.chats).scrollTop = ReactDOM.findDOMNode(this.refs.chats).scrollHeight;
+  }
+
+  submitMessage(e) {
+      e.preventDefault();
+
+      this.setState({
+          chats: this.state.chats.concat([{
+              username: "Kevin Hsu",
+              content: <p>{ReactDOM.findDOMNode(this.refs.msg).value}</p>,
+              img: "http://i.imgur.com/Tj5DGiO.jpg",
+          }])
+      }, () => {
+          ReactDOM.findDOMNode(this.refs.msg).value = "";
+      });
+  }
+
+  render() {
+    const { classes } = this.props;
+    const username = "Kevin Hsu";
+    const { chats } = this.state;
+
+    return (
+      
+        <div className="chatroom">
+            <h3>Project Development Chat</h3>
+            <ul className="chats" ref="chats">
+              {
+                chats.map((chat) => 
+                <Message chat={chat} user={username} />
+                )
+              }
+            </ul>
+            <form className="input" onSubmit={(e) => this.submitMessage(e)}>
+                <input type="text" ref="msg" />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+        
+      
+      );
+  }
 }
 
-UserProfile.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(UserProfile);
+export default withStyles(ChatAppStyle)(ContactTeam);

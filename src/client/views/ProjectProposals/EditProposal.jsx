@@ -8,13 +8,18 @@ import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
+import CustomInput from '../../components/CustomInput/CustomInput.jsx';
+import InputLabel from '@material-ui/core/InputLabel';
 import Card from '../../components/Card/Card.jsx';
 import CardHeader from '../../components/Card/CardHeader.jsx';
 import CardBody from '../../components/Card/CardBody.jsx';
 import CardIcon from '../../components/Card/CardIcon.jsx';
+import CardFooter from '../../components/Card/CardFooter.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
-const styles = {
+const styles = theme => ({
   cardCategoryWhite: {
     '&,& a,& a:hover,& a:focus': {
       color: 'rgba(255,255,255,.62)',
@@ -64,14 +69,25 @@ const styles = {
       lineHeight: '1'
     }
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginTop: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    marginBottom: 0,
+    width: 200,
+  },
   headerButton: {
     float: 'right',
     marginLeft: '20000px',
     color: '#000000'
   }
-};
+});
 
-class TableList extends React.Component {
+class EditProposal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -116,58 +132,190 @@ class TableList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
-    let projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
-    if (this.state.projectList.length > 0) {
-      // Filter the results
-      const filteredProjects = this.state.projectList.filter(element => element.projTitle.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1);
-
-      // Format the results
-      projList = filteredProjects.map(project => (
-        <GridItem xs={12} sm={12} md={12}>
-          <Card>
-            <CardHeader color="primary">
-              <GridContainer>
-                <GridItem>
-                  <h3 className={classes.cardTitleWhite}>{project.projTitle}</h3>
-                </GridItem>
-              </GridContainer>
-            </CardHeader>
-            <CardBody>
-              <h4 className={classes.cardTitle}>{project.companyName}</h4>
-              <p>{project.description}</p>
-              <a href="editproposal">
-                <Button color="rose">
-                  Edit Proposal
-                </Button>
-              </a>
-            </CardBody>
-          </Card>
-        </GridItem>
-      ));
-    }
-
     return (
-      <GridContainer>
-        <GridItem xs={2} sm={2} md={2}>
-          <Card>
-            <CardHeader color="info" stats icon>
-              <CardIcon color="info">
-                <a href="newproposal">
-                  <Icon>add</Icon>
-                </a>
-              </CardIcon>
-              <p className={classes.cardCategory}>Propose a Project</p>
-              <h3 className={classes.cardTitle}>
-                {' '}
-                <a href="newproposal">New</a>
-              </h3>
-            </CardHeader>
-          </Card>
-        </GridItem>
-        {projList}
-      </GridContainer>
+      <GridItem xs={12} sm={12} md={8}>
+        <Card>
+          <CardHeader color="warning">
+            <h2 className={classes.cardTitleWhite}>Edit Proposal</h2>
+          </CardHeader>
+          <CardBody>
+
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={6}>
+                <CustomInput
+                  labelText="Project Name"
+                  id="project-name"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <form className={classes.container} noValidate>
+                  <TextField
+                    id="date"
+                    label="Start By"
+                    type="date"
+                    defaultValue="2019-01-24"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </form>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <form className={classes.container} noValidate>
+                  <TextField
+                    id="date"
+                    label="Due By"
+                    type="date"
+                    defaultValue="2019-05-24"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </form>
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={5}>
+                <CustomInput
+                  labelText="Company"
+                  id="company"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  // inputProps={{
+                  //   disabled: true
+                  // }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <CustomInput
+                  labelText="Project Leader"
+                  id="project-leader"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <CustomInput
+                  labelText="Estimated Team Size"
+                  id="team-size"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={4}>
+                <CustomInput
+                  labelText="Location"
+                  id="Location"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <CustomInput
+                  labelText="Preferred Contact Method"
+                  id="preferred-method"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <CustomInput
+                  labelText="Difficulty"
+                  id="difficulty"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
+                <InputLabel style={{ color: '#AAAAAA' }} />
+                <CustomInput
+                  labelText="Project Summary:"
+                  id="project-description"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    multiline: true,
+                    rows: 4
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
+                <InputLabel style={{ color: '#AAAAAA' }} />
+                <CustomInput
+                  labelText="Features Requested:"
+                  id="features-requested"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    multiline: true,
+                    rows: 4
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
+                <InputLabel style={{ color: '#AAAAAA' }} />
+                <CustomInput
+                  labelText="Skills Requested:"
+                  id="requested-skills"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    multiline: true,
+                    rows: 4
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
+                <InputLabel style={{ color: '#AAAAAA' }} />
+                <CustomInput
+                  labelText="Other information:"
+                  id="other-information"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    multiline: true,
+                    rows: 4
+                  }}
+                />
+              </GridItem>
+            </GridContainer>
+          </CardBody>
+          <CardFooter>
+            <Button color="success">Save Changes</Button>
+          </CardFooter>
+        </Card>
+      </GridItem>
     );
   }
 }
-export default withStyles(styles)(TableList);
+
+EditProposal.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(EditProposal);

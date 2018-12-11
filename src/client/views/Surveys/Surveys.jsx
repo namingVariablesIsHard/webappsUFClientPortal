@@ -71,12 +71,6 @@ class Surveys extends React.Component {
                 <p className={classes.cardCategory}>Surveys to complete</p>
                 <h3 className={classes.cardTitle}> 4</h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Create />
-                  <a href="newsurvey">Complete pending surveys</a>
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
@@ -88,12 +82,6 @@ class Surveys extends React.Component {
                 <p className={classes.cardCategory}>Review Student Surveys</p>
                 <h3 className={classes.cardTitle}>3</h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <FindInPage />  
-                  <a href="surveys"> View Student Surveys</a>
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
         </GridContainer>
