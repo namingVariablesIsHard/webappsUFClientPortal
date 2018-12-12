@@ -54,6 +54,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
+    "js-file-manager": "^1.0.7",
     "mongoose": "^5.3.11",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.6",
