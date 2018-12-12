@@ -1,8 +1,12 @@
 const express = require('express');
 const path = require('path');
 
+var projectController = require('./projects.controller');
+
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+app.get("/api/getAllProposedProjects", projectController.getAllProposedProjects);
 
 app.use(express.static('dist'));
 
