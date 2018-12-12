@@ -64,6 +64,13 @@ const dashboardRoutes = [
     component: ProjectManagement
   },
   {
+    path: "/projectmanagement:ID",
+    sidebarName: "Project Management",
+    navbarName: "Manage Project",
+    icon: Book,
+    component: ProjectManagement
+  },
+  {
     path: "/projectproposals",
     sidebarName: "Project Proposals",
     navbarName: "Propose a Project",
