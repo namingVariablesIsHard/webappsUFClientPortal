@@ -85,20 +85,43 @@ const styles = theme => ({
 const currencies = [
   {
     value: 'USD',
-    label: '$',
+    label: 'Strongly Agree',
   },
   {
     value: 'EUR',
-    label: '€',
+    label: 'Agree',
   },
   {
     value: 'BTC',
-    label: '฿',
+    label: 'Neutral',
   },
   {
     value: 'JPY',
-    label: '¥',
+    label: 'Disagree',
   },
+  {
+    value: 'JPY',
+    label: 'Strongly Disagree',
+  },
+];
+
+const currencies2 = [
+  {
+    value: 'USD',
+    label: 'Car Loans',
+  },
+  {
+    value: 'EUR',
+    label: 'National Defense',
+  },
+  {
+    value: 'BTC',
+    label: 'Puppy Store',
+  },
+  {
+    value: 'JPY',
+    label: 'Environmental Map',
+  }
 ];
 
 
@@ -180,6 +203,28 @@ class TableList extends React.Component {
                 </Button>
               </a>{' '}
               <TextField
+                id="rating-selector"
+                select
+                //label="Project"
+                className={classes.textField}
+                value={this.state.teamList}
+                onChange={this.handleChange('teamList')}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu,
+                  },
+                }}
+                helperText="Want to work with"
+                margin="dense"
+              >
+                {currencies.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              {' '}
+              <TextField
                 id="assign-team-selector"
                 select
                 //label="Project"
@@ -191,10 +236,10 @@ class TableList extends React.Component {
                     className: classes.menu,
                   },
                 }}
-                helperText="Assign Team to Project"
+                helperText="Project to work on"
                 margin="dense"
               >
-                {currencies.map(option => (
+                {currencies2.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>

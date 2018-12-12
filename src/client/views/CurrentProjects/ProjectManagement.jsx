@@ -183,6 +183,11 @@ class ProjectManagement extends React.Component {
                             Upload
                           </Button>
                         </a>
+                        <a href="projectmanagement">
+                          <Button color="info">
+                            Download
+                          </Button>
+                        </a>
                         </GridContainer>
                       {/* <div id='test01' class='button'>Pick a file</div>
                       <script>
@@ -196,7 +201,7 @@ class ProjectManagement extends React.Component {
                     </div>
                     
                   </Modal>
-                  <a href="projectmanagement">
+                  <a href="contactteam">
                     <Button color="success">
                       Team Chat
                     </Button>
@@ -208,13 +213,13 @@ class ProjectManagement extends React.Component {
                     </Button>
                   </a>
                   {' '}
-                  <a href="projectmanagement">
+                  <a href="pastprojectgallery">
                     <Button color="primary">
                       Archive Project
                     </Button>
                   </a>
                   {' '}
-                  <a href="projectmanagement">
+                  <a href="currentprojects">
                     <Button color="danger">
                       Delete Project
                     </Button>
