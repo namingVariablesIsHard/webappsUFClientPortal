@@ -87,26 +87,33 @@ class TableList extends React.Component {
   // const { classes } = this.props;
 
   initProjList = () => {
-    // Replace with call to endpoint
-    const projArray = [];
+    // // Replace with call to endpoint
+    // const projArray = [];
 
-    // Example data
-    const firstProject = {
-      projTitle: 'Current project 1',
-      teamName: 'Test Team',
-      groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
-      description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
-    };
-    const secondProject = {
-      projTitle: 'Current project 2',
-      teamName: 'Test Team',
-      groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
-      description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
-    };
-    projArray.push(firstProject);
-    projArray.push(secondProject);
+    // // Example data
+    // const firstProject = {
+    //   projTitle: 'Current project 1',
+    //   teamName: 'Test Team',
+    //   groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
+    //   description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
+    // };
+    // const secondProject = {
+    //   projTitle: 'Current project 2',
+    //   teamName: 'Test Team',
+    //   groupMembers: [{ name: 'member1', email: 'member1@email.com' }, { name: 'member2', email: 'member2@email.com' }, { name: 'member3', email: 'member3@email.com' }],
+    //   description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
+    // };
+    // projArray.push(firstProject);
+    // projArray.push(secondProject);
 
-    this.state.projectList = projArray;
+    // this.state.projectList = projArray;
+    fetch('/api/getAllCurrentProjects')
+    .then(results =>{
+      return results.json();
+    })
+    .then(data => {
+      this.setState({projectList: data});
+    });
   }
 
   filterUpdate(value) {
@@ -133,9 +140,10 @@ class TableList extends React.Component {
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>{project.teamName}</h4>
-              {project.groupMembers.map((memberSet) =>{
+              {/* Must add back in when students actually exist in db */}
+              {/* {project.groupMembers.map((memberSet) =>{
                 return <p>{memberSet.name} - <a href="mailto:{memberSet.email}">{memberSet.email}</a></p>;
-              })}
+              })} */}
               <p className={classes.cardCategory}>{project.description}</p>
               <a href="projectmanagement">
                 <Button color="primary">

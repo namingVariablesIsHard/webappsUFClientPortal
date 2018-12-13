@@ -84,30 +84,13 @@ class TableList extends React.Component {
   }
 
   initProjList = () => {
-    // Replace with call to endpoint
-    const projArray = [];
-
-    // Example data (Note that the db should actually store as much info for the project as possible, but endpoints should only return what is necessary)
-    const firstProject = {
-      projTitle: 'Proposed project 1',
-      companyName: 'Sample Inc',
-      description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
-    };
-    const secondProject = {
-      projTitle: 'Proposed project 2',
-      companyName: 'Fake LLC',
-      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
-    };
-    const thirdProject = {
-      projTitle: 'Proposed project 3',
-      companyName: 'Test Co.',
-      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
-    };
-    projArray.push(firstProject);
-    projArray.push(secondProject);
-    projArray.push(thirdProject);
-
-    this.state.projectList = projArray;
+    fetch('/api/getAllProposedProjects')
+      .then(results =>{
+        return results.json();
+      })
+      .then(data => {
+        this.setState({projectList: data});
+      });
   }
 
   filterUpdate(value) {
@@ -117,7 +100,7 @@ class TableList extends React.Component {
   render() {
     const { classes } = this.props;
 
-    let projList = <Card><CardBody><h4>No Archived Projects</h4></CardBody></Card>;
+    let projList = <Card><CardBody><h4>No Proposed Projects</h4></CardBody></Card>;
     if (this.state.projectList.length > 0) {
       // Filter the results
       const filteredProjects = this.state.projectList.filter(element => element.projTitle.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1);

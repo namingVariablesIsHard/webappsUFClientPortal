@@ -3,7 +3,7 @@ dist
 package-lock.json
 
 # Ignore Mongolab config details
-src/server/config/config.js
+# src/server/config/config.js
 
 # Logs
 logs
