@@ -8,6 +8,8 @@ import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 import Done from '@material-ui/icons/Done';
 import Clear from '@material-ui/icons/Clear';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
@@ -19,7 +21,19 @@ import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
 import Build from '@material-ui/icons/Build';
 
-const styles = {
+function getModalStyle() {
+  const top = 50; // + rand();
+  const left = 50; // + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+
+const styles = theme => ({
   cardCategoryWhite: {
     '&,& a,& a:hover,& a:focus': {
       color: 'rgba(255,255,255,.62)',
@@ -31,6 +45,13 @@ const styles = {
     '& a,& a:hover,& a:focus': {
       color: '#FFFFFF'
     }
+  },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
   },
   cardCategory: {
     color: "#999999",
@@ -69,7 +90,7 @@ const styles = {
       lineHeight: '1'
     }
   }
-};
+});
 
 class ViewPastProject extends React.Component {
   constructor(props) {
@@ -101,6 +122,14 @@ class ViewPastProject extends React.Component {
     this.state.projectList = projArray;
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   filterUpdate(value) {
     this.setState({ filterText: value });
   }
@@ -126,6 +155,37 @@ class ViewPastProject extends React.Component {
               </CardHeader>
               <CardBody>
                 <div align="right">
+                <Button color="rose" onClick={this.handleOpen}>
+                    File Management
+                  </Button>
+                  <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                  >
+                    <div style={getModalStyle()} className={classes.paper}>
+                      <Typography variant="h6" id="modal-title">
+                        Download & Upload Project Files
+                      </Typography>
+                      <Typography variant="subtitle4" id="simple-modal-description">
+                        File exchange between Clients and Development Team
+                      </Typography>
+                      <GridContainer>
+                        <a href="projectmanagement">
+                          <Button color="primary">
+                            Upload
+                          </Button>
+                        </a>
+                        <a href="projectmanagement">
+                          <Button color="info">
+                            Download
+                          </Button>
+                        </a>
+                        </GridContainer>
+                    </div>
+                    
+                  </Modal>
                 <a href="projectmanagement">
                   <Button color="success">
                     Team Chat

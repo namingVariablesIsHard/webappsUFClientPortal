@@ -8,6 +8,11 @@ import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 import Done from '@material-ui/icons/Done';
 import Clear from '@material-ui/icons/Clear';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+// import JSFileManager, { JSFile } from 'js-file-manager';
+var JSFileManager = require("js-file-manager");
+var JSFile = JSFileManager.JSFile;
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
 import Table from '../../components/Table/Table.jsx';
@@ -18,7 +23,22 @@ import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
 import Build from '@material-ui/icons/Build';
 
-const styles = {
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
+
+function getModalStyle() {
+  const top = 50; // + rand();
+  const left = 50; // + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const styles = theme => ({
   cardCategoryWhite: {
     '&,& a,& a:hover,& a:focus': {
       color: 'rgba(255,255,255,.62)',
@@ -30,6 +50,13 @@ const styles = {
     '& a,& a:hover,& a:focus': {
       color: '#FFFFFF'
     }
+  },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
   },
   cardCategory: {
     color: "#999999",
@@ -68,13 +95,14 @@ const styles = {
       lineHeight: '1'
     }
   }
-};
+});
 
 class ProjectManagement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       projectList: [],
+      open: false,
       // Filter must be integrated into
       filterText: ''
     };
@@ -99,6 +127,14 @@ class ProjectManagement extends React.Component {
 
     this.state.projectList = projArray;
   }
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   filterUpdate(value) {
     this.setState({ filterText: value });
@@ -125,26 +161,69 @@ class ProjectManagement extends React.Component {
               </CardHeader>
               <CardBody>
                 <div align="right">
-                <a href="projectmanagement">
-                  <Button color="success">
-                    Team Chat
+                  <Button color="rose" onClick={this.handleOpen}>
+                    File Management
                   </Button>
-                </a>{' '}
-                <a href="newsurvey">
-                  <Button color="info">
-                    Take Survey
-                  </Button>
-                </a>{' '}
-                <a href="projectmanagement">
-                  <Button color="primary">
-                    Archive Project
-                  </Button>
-                </a>{' '}
-                <a href="projectmanagement">
-                  <Button color="danger">
-                    Delete Project
-                  </Button>
-                </a>
+                  <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                  >
+                    <div style={getModalStyle()} className={classes.paper}>
+                      <Typography variant="h6" id="modal-title">
+                        Download & Upload Project Files
+                      </Typography>
+                      <Typography variant="subtitle4" id="simple-modal-description">
+                        File exchange between Clients and Development Team
+                      </Typography>
+                      <GridContainer>
+                        <a href="projectmanagement">
+                          <Button color="primary">
+                            Upload
+                          </Button>
+                        </a>
+                        <a href="projectmanagement">
+                          <Button color="info">
+                            Download
+                          </Button>
+                        </a>
+                        </GridContainer>
+                      {/* <div id='test01' class='button'>Pick a file</div>
+                      <script>
+                        document.querySelector("test01").addEventListener("click", function(event) {
+                          JSFileManager.pick({ event: event }).then(function(file) {
+                          })
+                        });
+                      </script>
+                      */}
+                      {/* <SimpleModalWrapped /> */}
+                    </div>
+                    
+                  </Modal>
+                  <a href="contactteam">
+                    <Button color="success">
+                      Team Chat
+                    </Button>
+                  </a>
+                  {' '}
+                  <a href="newsurvey">
+                    <Button color="info">
+                      Take Survey
+                    </Button>
+                  </a>
+                  {' '}
+                  <a href="pastprojectgallery">
+                    <Button color="primary">
+                      Archive Project
+                    </Button>
+                  </a>
+                  {' '}
+                  <a href="currentprojects">
+                    <Button color="danger">
+                      Delete Project
+                    </Button>
+                  </a>
                 </div>
                 <h4 className={classes.cardTitle}>{project.teamName}</h4>
                 {project.groupMembers.map((memberSet) =>{
@@ -194,5 +273,7 @@ class ProjectManagement extends React.Component {
 ProjectManagement.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
+const SimpleModalWrapped = withStyles(styles)(ProjectManagement);
 
 export default withStyles(styles)(ProjectManagement);
