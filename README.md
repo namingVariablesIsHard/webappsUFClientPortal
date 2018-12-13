@@ -4,7 +4,7 @@ Project #2 WebApps @ UF Client Portal - Group D
 
 This is a Client Portal for organizations to manage projects and proposals with a team of developers. 
 
-Deployed on [Heroku](https://webappsufclientportal.herokuapp.com/).
+Deployed on [Heroku](https://webappsufclientportal.herokuapp.com/), https://webappsufclientportal.herokuapp.com/.
 
 - [Webapps@UF Client Portal](#webapps-uf-client-portal)
   - [Introduction](#introduction)
