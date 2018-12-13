@@ -124,10 +124,11 @@ exports.getAllArchivedProjects = async function(req, res) {
 }
 
 exports.getSelectedProject = async function(req, res) { //{_id: "something..."}
-    myModel.findOne({proj_id : req.query.proj_id}, function(err, proj){
+    myModel.findOne({_id : req.query.projid}, function(err, proj){
         if(err){
             res.send(err);
         }
+        console.log(req.query.projid);
         console.log(proj);
         res.json(proj);
     })

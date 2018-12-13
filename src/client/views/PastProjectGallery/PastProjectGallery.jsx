@@ -100,10 +100,10 @@ class TableList extends React.Component {
     // this.state.projectList = projArray;
     fetch('/api/getAllArchivedProjects')
       .then(results => {
-        return results.json();
+          return results.json();
       })
       .then(data => {
-        this.setState({projectList: data});
+          this.setState({projectList: data});
       });
   }
 
