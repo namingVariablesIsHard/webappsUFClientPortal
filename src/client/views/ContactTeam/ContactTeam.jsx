@@ -1,30 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-// @material-ui/core components
+import GridFS from 'gridfs-stream';
 import withStyles from '@material-ui/core/styles/withStyles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-// core components
-import Icon from '@material-ui/core/Icon';
-import Create from '@material-ui/icons/Create';
-import GridItem from '../../components/Grid/GridItem.jsx';
-import GridContainer from '../../components/Grid/GridContainer.jsx';
-import CustomInput from '../../components/CustomInput/CustomInput.jsx';
-import Button from '../../components/CustomButtons/Button.jsx';
-import Card from '../../components/Card/Card.jsx';
-import CardHeader from '../../components/Card/CardHeader.jsx';
-import CardAvatar from '../../components/Card/CardAvatar.jsx';
-import CardBody from '../../components/Card/CardBody.jsx';
-import CardFooter from '../../components/Card/CardFooter.jsx';
-import CardIcon from '../../components/Card/CardIcon.jsx';
-
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
-import avatar from '../../assets/img/faces/tim.jpg';
 
 import Message from './Message.js';
 import ChatAppStyle from './ChatApp.css';
@@ -75,41 +52,6 @@ const styles = theme => ({
   }
 });
 
-// function ContactTeam(props) {
-//   const { classes } = props;
-//   return (
-//     <div>
-//       <Paper className={classes.root} elevation={1}>
-//         <Typography variant="h5" component="h3">
-//           This is a sheet of paper.
-//         </Typography>
-//         <Typography component="p">
-//           Paper can be used to build surface or other elements for your application.
-//         </Typography>
-//         <div className="chatroom">
-//                 <h3>Chilltime</h3>
-//                 <ul className="chats" ref="chats">
-//                     {
-//                         chats.map((chat) => 
-//                             <Message chat={chat} user={username} />
-//                         )
-//                     }
-//                 </ul>
-//                 <form className="input" onSubmit={(e) => this.submitMessage(e)}>
-//                     <input type="text" ref="msg" />
-//                     <input type="submit" value="Submit" />
-//                 </form>
-//             </div>
-//       </Paper>
-//     </div>
-//   );
-// }
-
-// ContactTeam.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-
 class ContactTeam extends React.Component {
   constructor(props) {
       super(props);
@@ -125,7 +67,7 @@ class ContactTeam extends React.Component {
               img: "http://i.imgur.com/Tj5DGiO.jpg",
           }, {
               username: "Kevin Hsu",
-              content: <p>Check out my Github at https://github.com/WigoHunter</p>,
+              content: <p>Check out my Github</p>,
               img: "http://i.imgur.com/Tj5DGiO.jpg",
           }, {
               username: "KevHs",
@@ -206,4 +148,4 @@ class ContactTeam extends React.Component {
   }
 }
 
-export default withStyles(ChatAppStyle)(ContactTeam);
+export default withStyles(styles)(ContactTeam);

@@ -2,11 +2,6 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import BubbleChart from "@material-ui/icons/BubbleChart";
-import LocationOn from "@material-ui/icons/LocationOn";
-import Notifications from "@material-ui/icons/Notifications";
-import Unarchive from "@material-ui/icons/Unarchive";
 import Book from "@material-ui/icons/Book";
 import Propose from "@material-ui/icons/NoteAdd";
 import Find from "@material-ui/icons/FindInPage";
@@ -20,7 +15,6 @@ import Typography from "../views/Typography/Typography.jsx";
 import Icons from "../views/Icons/Icons.jsx";
 import Maps from "../views/Maps/Maps.jsx";
 import NotificationsPage from "../views/Notifications/Notifications.jsx";
-import UpgradeToPro from "../views/UpgradeToPro/UpgradeToPro.jsx";
 import CurrentProjects from "../views/CurrentProjects/CurrentProjects.jsx";
 import ProjectProposals from "../views/ProjectProposals/ProjectProposals.jsx";
 import FindATeam from "../views/FindATeam/FindATeam.jsx";
@@ -120,13 +114,6 @@ const dashboardRoutes = [
   //   navbarName: "Notifications",
   //   icon: Notifications,
   //   component: NotificationsPage
-  // },
-  // {
-  //   path: "/upgrade-to-pro",
-  //   sidebarName: "Upgrade To PRO",
-  //   navbarName: "Upgrade To PRO",
-  //   icon: Unarchive,
-  //   component: UpgradeToPro
   // },
   { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];

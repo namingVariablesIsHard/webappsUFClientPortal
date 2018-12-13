@@ -1,5 +1,6 @@
 .vscode
 dist
+# If using yarn, ignore npm package-lock for heroku to know how to install
 package-lock.json
 
 # Ignore Mongolab config details

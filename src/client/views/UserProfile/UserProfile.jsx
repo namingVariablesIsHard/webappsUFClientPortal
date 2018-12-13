@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Grid from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-// core components
+// Core components
 import Icon from '@material-ui/core/Icon';
 import Create from '@material-ui/icons/Create';
 import GridItem from '../../components/Grid/GridItem.jsx';
@@ -20,6 +21,7 @@ import CardBody from '../../components/Card/CardBody.jsx';
 import CardFooter from '../../components/Card/CardFooter.jsx';
 import CardIcon from '../../components/Card/CardIcon.jsx';
 
+// Temporary avatar import
 import avatar from '../../assets/img/faces/tim.jpg';
 
 const styles = {
@@ -62,6 +64,9 @@ const styles = {
     textDecoration: 'none'
   }
 };
+
+// TODO: Functions to grab userprofile data
+// GridFS 
 
 function UserProfile(props) {
   const { classes } = props;
@@ -198,32 +203,6 @@ function UserProfile(props) {
             </CardFooter>
           </Card>
         </GridItem>
-        {/* <GridItem xs={12} sm={12} md={4}>
-          <Card profile>
-            <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO, Apple Inc</h6>
-              <h4 className={classes.cardTitle}>Tim Cook</h4>
-              <p className={classes.description}>
-              Timothy Donald Cook (born November 1, 1960) is an American business executive and industrial engineer.
-              Cook is the Chief Executive Officer of Apple Inc., and previously served as the company's Chief
-              Operating Officer under its founder Steve Jobs. Cook joined Apple in March 1998 as a senior
-              vice president for worldwide operations, and then served as the Executive Vice President for
-              worldwide sales and operations. He was made the Chief Executive on August 24, 2011, prior to
-              Jobs' death in October of that year. During his tenure as the Chief Executive, he has advocated
-              for the political reformation of international and domestic surveillance, cybersecurity,
-              corporate taxation, American manufacturing, and environmental preservation.
-              </p>
-              <Button color="warning" round>
-                Update Avatar
-              </Button>
-            </CardBody>
-          </Card>
-        </GridItem> */}
       </GridContainer>
     </div>
   );

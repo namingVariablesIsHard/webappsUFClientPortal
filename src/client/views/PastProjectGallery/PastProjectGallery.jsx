@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GridFS from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
@@ -61,13 +62,7 @@ const styles = {
       fontWeight: '400',
       lineHeight: '1'
     }
-  },
-  // indentLvl0: {
-  //   margin: "0 auto"
-  // },
-  // indentLvl1: {
-  //   marginLeft: "50px"
-  // }
+  }
 };
 
 class TableList extends React.Component {
