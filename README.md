@@ -44,7 +44,7 @@ Features:
   -  Complete - Client Feedback Surveys
   -  View Summary of Student Feedback Surveys
 
-![Dashboard](homepage.PNG?raw=true "Dashboard")
+![Dashboard](homepage1.PNG?raw=true "Dashboard")
 
 The baseline for this project is a boilerplate which builds a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
