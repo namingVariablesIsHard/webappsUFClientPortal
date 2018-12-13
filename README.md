@@ -4,6 +4,8 @@ Project #2 WebApps @ UF Client Portal - Group D
 
 This is a Client Portal for organizations to manage projects and proposals with a team of developers. 
 
+Deployed on [Heroku](https://webappsufclientportal.herokuapp.com/).
+
 - [Webapps@UF Client Portal](#webapps-uf-client-portal)
   - [Introduction](#introduction)
     - [Development mode](#development-mode)
@@ -23,6 +25,26 @@ This is a Client Portal for organizations to manage projects and proposals with 
     - [License](#license)
 
 ## Introduction
+
+This project is focused on creating a client portal for the WebApps@ UF Project Management App. This app will allow potential clients and selected clients to create organizational profiles, manage project,
+ and upload and share docs with their project team.
+
+Features:
+- Organizational Profile Management
+- Project proposal Management
+  - File upload and Storage – version control would be a bonus
+  - Create, Read, Update, Delete, Archive, and Publish project proposals
+- View Past Project Gallery
+- View & Select teams and skills from a list of teams
+- Project Management Features
+  - View & Send Email
+  - View assigned team
+  - Project Documentation File Upload
+  -  Manage project feature status updates, approval, comments
+  -  Complete - Client Feedback Surveys
+  -  View Summary of Student Feedback Surveys
+
+![Dashboard](homepage.PNG?raw=true "Dashboard")
 
 The baseline for this project is a boilerplate which builds a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
@@ -59,6 +81,12 @@ yarn build (or npm run build)
 # Start production server
 yarn start (or npm start)
 ```
+
+### Database Management
+
+Currently using mLab to manage the externally stored data. 
+
+Connection information can be found and edited in **src/server/config/config.js**
 
 ## Documentation
 
@@ -250,5 +278,8 @@ Above, we have modified editor configurations. Alternatively, this can be config
 ### License
 
 See License [ISC License](https://github.com/namingVariablesIsHard/webappsUFClientPortal/blob/master/LICENSE).
+
+React Boilerplate [simple-react-full-stack](https://github.com/crsandeep/simple-react-full-stack).
+
 
 ### Edited by Cameran 11/5/18

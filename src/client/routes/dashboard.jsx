@@ -38,7 +38,21 @@ const dashboardRoutes = [
     component: DashboardPage
   },
   {
+    path: '/dashboard/:userID',
+    sidebarName: 'Dashboard',
+    navbarName: 'Client Dashboard',
+    icon: Dashboard,
+    component: DashboardPage
+  },
+  {
     path: '/user',
+    sidebarName: 'User Profile',
+    navbarName: 'Profile',
+    icon: Person,
+    component: UserProfile
+  },
+  {
+    path: '/user/:userID',
     sidebarName: 'User Profile',
     navbarName: 'Profile',
     icon: Person,
@@ -52,6 +66,13 @@ const dashboardRoutes = [
     component: CurrentProjects
   },
   {
+    path: '/currentprojects/:projectID',
+    sidebarName: 'Current Projects',
+    navbarName: 'Currently Active Projects',
+    icon: Book,
+    component: CurrentProjects
+  },
+  {
     path: '/projectmanagement',
     sidebarName: 'Project Management',
     navbarName: 'Manage Project',
@@ -59,7 +80,7 @@ const dashboardRoutes = [
     component: ProjectManagement
   },
   {
-    path: '/projectmanagement:ID',
+    path: '/projectmanagement/:projectID',
     sidebarName: 'Project Management',
     navbarName: 'Manage Project',
     icon: Book,
@@ -73,6 +94,13 @@ const dashboardRoutes = [
     component: ProjectProposals
   },
   {
+    path: '/projectproposals/:projectID',
+    sidebarName: 'Project Proposals',
+    navbarName: 'Propose a Project',
+    icon: Propose,
+    component: ProjectProposals
+  },
+  {
     path: '/newproposal',
     sidebarName: 'New Proposal',
     navbarName: 'Create a New Proposal',
@@ -80,7 +108,21 @@ const dashboardRoutes = [
     component: NewProposal
   },
   {
+    path: '/newproposal/:projectID',
+    sidebarName: 'New Proposal',
+    navbarName: 'Create a New Proposal',
+    icon: Propose,
+    component: NewProposal
+  },
+  {
     path: '/editproposal',
+    sidebarName: 'Edit Proposal',
+    navbarName: 'Edit a Proposal',
+    icon: Propose,
+    component: EditProposal
+  },
+  {
+    path: '/editproposal/:projectID',
     sidebarName: 'Edit Proposal',
     navbarName: 'Edit a Proposal',
     icon: Propose,
@@ -101,6 +143,13 @@ const dashboardRoutes = [
     component: ContactTeam
   },
   {
+    path: '/contactteam/:sessionID',
+    sidebarName: 'Contact Team',
+    navbarName: 'Contact a Team',
+    icon: Find,
+    component: ContactTeam
+  },
+  {
     path: '/pastprojectgallery',
     sidebarName: 'Past Projects',
     navbarName: 'Gallery of Past Projects',
@@ -115,7 +164,21 @@ const dashboardRoutes = [
     component: ViewPastProject
   },
   {
+    path: '/viewpastproject/:projectID',
+    sidebarName: 'View Past Project',
+    navbarName: 'View Past Project',
+    icon: PastProj,
+    component: ViewPastProject
+  },
+  {
     path: '/newsurvey',
+    sidebarName: 'Complete a Survey',
+    navbarName: 'Complete a Survey',
+    icon: BubbleChart,
+    component: NewSurvey
+  },
+  {
+    path: '/newsurvey/:projectID',
     sidebarName: 'Complete a Survey',
     navbarName: 'Complete a Survey',
     icon: BubbleChart,
@@ -130,6 +193,13 @@ const dashboardRoutes = [
   },
   {
     path: '/surveyresults',
+    sidebarName: 'Survey Results',
+    navbarName: 'Results of Submitted Surveys',
+    icon: Survey,
+    component: SurveyResults
+  },
+  {
+    path: '/surveyresults/:projectID',
     sidebarName: 'Survey Results',
     navbarName: 'Results of Submitted Surveys',
     icon: Survey,
