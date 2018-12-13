@@ -56,7 +56,7 @@ exports.getAllCurrentProjects = async function(req, res) {
                         res.send(err);
                     }
                     console.log(studentList);
-                    projList[index].groupMembers = studentList[0];
+                    projList[index].groupMembers = studentList;
                     if(index + 1 === totProjects)
                         callbackFunc();
                 })
