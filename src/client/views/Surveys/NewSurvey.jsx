@@ -197,7 +197,6 @@ class NewSurvey extends React.Component {
           </GridItem>
         </GridContainer>
       </div>
-
     );
   }
 }

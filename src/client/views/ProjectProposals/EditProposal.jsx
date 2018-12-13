@@ -301,7 +301,9 @@ class EditProposal extends React.Component {
             </GridContainer>
           </CardBody>
           <CardFooter>
-            <Button color="success">Save Changes</Button>
+            <a href="projectproposals">
+              <Button color="success">Save Changes</Button>
+            </a>
           </CardFooter>
         </Card>
       </GridItem>

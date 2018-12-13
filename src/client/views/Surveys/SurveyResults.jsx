@@ -2,33 +2,69 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import GridFS from 'gridfs-stream';
-
-// @material-ui/core
+// @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-import Button from '@material-ui/core/Button';
-import Create from '@material-ui/icons/Create';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import ArrowUpward from '@material-ui/icons/ArrowUpward';
-import AccessTime from '@material-ui/icons/AccessTime';
+import InputLabel from '@material-ui/core/InputLabel';
 import Accessibility from '@material-ui/icons/Accessibility';
 import FindInPage from '@material-ui/icons/FindInPage';
-import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
-import Clear from '@material-ui/icons/Clear';
-import Archive from '@material-ui/icons/Archive';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 // core components
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
-import Table from '../../components/Table/Table.jsx';
+import CustomInput from '../../components/CustomInput/CustomInput.jsx';
+import Button from '../../components/CustomButtons/Button.jsx';
 import Card from '../../components/Card/Card.jsx';
 import CardHeader from '../../components/Card/CardHeader.jsx';
-import CardIcon from '../../components/Card/CardIcon.jsx';
+import CardAvatar from '../../components/Card/CardAvatar.jsx';
 import CardBody from '../../components/Card/CardBody.jsx';
 import CardFooter from '../../components/Card/CardFooter.jsx';
+import CardIcon from '../../components/Card/CardIcon.jsx';
 
-import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx';
+const styles = {
+  cardCategoryWhite: {
+    color: 'rgba(255,255,255,.62)',
+    margin: '0',
+    fontSize: '14px',
+    marginTop: '0',
+    marginBottom: '0'
+  },
+  cardCategory: {
+    color: "#999999",
+    margin: "0",
+    fontSize: "14px",
+    marginTop: "0",
+    paddingTop: "10px",
+    marginBottom: "0"
+  },
+  cardTitle: {
+    color: "#3C4858",
+    marginTop: "0px",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none",
+    "& small": {
+      color: "#777",
+      fontWeight: "400",
+      lineHeight: "1"
+    }
+  },
+  cardTitleWhite: {
+    color: '#FFFFFF',
+    marginTop: '0px',
+    minHeight: 'auto',
+    fontWeight: '300',
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: '3px',
+    textDecoration: 'none'
+  }
+};
 
-class Surveys extends React.Component {
+class SurveyResults extends React.Component {
   state = {
     value: 0
   };
@@ -48,85 +84,141 @@ class Surveys extends React.Component {
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="warning" stats icon>
-                <CardIcon color="warning">
-                <Accessibility />
+              <CardHeader color="info" stats icon>
+                <CardIcon color="info">
+                <FindInPage />
                 </CardIcon>
-                <p className={classes.cardCategory}>Surveys to complete</p>
-                <h3 className={classes.cardTitle}> 4</h3>
+                <p className={classes.cardCategory}>Project:</p>
+                <h5 className={classes.cardTitle}> Fishing Explorer</h5>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Create />
-                  <a href="surveys">Complete pending surveys</a>
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <SentimentSatisfiedAlt />
+              <CardHeader color="primary" stats icon>
+                <CardIcon color="primary">
+                <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Review Student Surveys</p>
-                <h3 className={classes.cardTitle}>3</h3>
+                <p className={classes.cardCategory}>Survey Completed By:</p>
+                <h5 className={classes.cardTitle}> Kate Lancaster</h5>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <FindInPage />  
-                  <a href="surveys"> View Student Surveys</a>
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
-        </GridContainer>
-        <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
               <CardHeader color="success">
-                <Button color="default" className={classes.title}>
-                  <a href="currentprojects">
-                    <h3 className={classes.cardTitleWhite}>Completed Projects</h3>
-                  </a>
-                </Button>
+                <h2 className={classes.cardTitleWhite}>Project Satisfaction Survey Results</h2>
               </CardHeader>
-              <CardBody>
-                <Table
-                  tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Team Members', 'Completed on', 'Complete Survey', 'View Project', 'Archive']}
-                  tableData={[
-                    ['1', 'Candy Labeling Visualizer', '3', 'October 15th, 2018', <ArrowUpward />, <KeyboardArrowRight />, <Archive />],
-                    ['2', 'Marble Table Local Polishing Service', '4', 'May 1st, 2018', <ArrowUpward />, <KeyboardArrowRight />, <Archive />],
-                    ['3', 'Bandwith Reduction Test', '2','June 1st, 2018', <ArrowUpward />, <KeyboardArrowRight />, <Archive />],
-                    ['4', 'National Defense Spending Tracker', '2', 'January 15th, 2018', <ArrowUpward />, <KeyboardArrowRight />, <Archive />]
-                  ]}
-                />
+              <CardBody>       
+                <GridContainer>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Describe your satisfaction"
+                      id="satisfaction"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Satisfaction of time to completion"
+                      id="timing"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>
+                <GridContainer>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Overall impression of look"
+                      id="look"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Ease of Communication"
+                      id="communication"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>
+                <GridContainer>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Rating out of 10"
+                      id="rating"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Look out of 10"
+                      id="look"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Completion out of 10"
+                      id="completion"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Functionality out of 10"
+                      id="functionality"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Completed by"
+                      id="completion"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>
+                <GridContainer>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <InputLabel style={{ color: "#AAAAAA" }}></InputLabel>
+                    <CustomInput
+                      labelText="Additional Comments (Optional)"
+                      id="about-me"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        multiline: true,
+                        rows: 5
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>       
               </CardBody>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={12}>
-            <Card>
-              <CardHeader color="primary">
-                <Button color="default" className={classes.title}>
-                  <a href="projectproposals">
-                    <h3 className={classes.cardTitleWhite}>Review Student Surveys</h3>
-                  </a>
-                </Button>
-              </CardHeader>
-              <CardBody>
-                <Table
-                  tableHeaderColor="success"
-                  tableHead={['#', 'Name', 'Project Name', 'Submitted on', 'Go to', 'Delete']}
-                  tableData={[
-                    ['1', 'Christopher Nolan', 'Candy Labeling Visualizer', 'October 21st @ 21:34 GMT', <KeyboardArrowRight />, <Clear />],
-                    ['2', 'Hussan Keibotep', 'Marble Table Local Polishing Service', 'May 13th @ 14:22 GMT', <KeyboardArrowRight />, <Clear />],
-                    ['3', 'Rachel Knowlingsby', 'Bandwith Reduction Test', 'June 14th @ 4:33 GMT', <KeyboardArrowRight />, <Clear />]
-                  ]}
-                />
-              </CardBody>
+              <CardFooter>
+                <a href="surveys">
+                  <Button color="rose">Finish Review</Button>
+                </a>
+              </CardFooter>
             </Card>
           </GridItem>
         </GridContainer>
@@ -135,8 +227,8 @@ class Surveys extends React.Component {
   }
 }
 
-Surveys.propTypes = {
+SurveyResults.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Surveys);
+export default withStyles(styles)(SurveyResults);

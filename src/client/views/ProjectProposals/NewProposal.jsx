@@ -302,7 +302,9 @@ class NewProposal extends React.Component {
             </GridContainer>
           </CardBody>
           <CardFooter>
-            <Button color="warning">Save Changes</Button>
+            <a href="projectproposals">
+              <Button color="warning">Save Changes</Button>
+            </a>
           </CardFooter>
         </Card>
       </GridItem>

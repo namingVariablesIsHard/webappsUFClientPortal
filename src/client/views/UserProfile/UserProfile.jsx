@@ -199,7 +199,9 @@ function UserProfile(props) {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="warning">Save Changes</Button>
+              <a href="user">
+                <Button color="warning">Save Changes</Button>
+              </a>
             </CardFooter>
           </Card>
         </GridItem>
