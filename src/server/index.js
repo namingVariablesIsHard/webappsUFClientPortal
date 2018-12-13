@@ -7,6 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.get("/api/getAllProposedProjects", projectController.getAllProposedProjects);
+app.get("/api/getAllCurrentProjects", projectController.getAllCurrentProjects);
+app.get("/api/getAllArchivedProject", projectController.getAllArchivedProject);
+
+app.post("/api/addProjectProposal", projectController.addProjectProposal);
 
 app.use(express.static('dist'));
 

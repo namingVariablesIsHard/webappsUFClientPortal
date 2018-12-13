@@ -1,11 +1,11 @@
 var mongoose = require('mongoose'), 
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema
+    uuidv4 = require('uuid/v4');
 
 var teamSchema = new Schema({
-    teamId: String, //uuid
     teamName: String,
     description: String,
-    projId: String
+    proj_id: Schema.Types.ObjectId
 });
 
 // auto append update/created time fields
@@ -14,9 +14,12 @@ teamSchema.pre('save', function(next){
     this.updated_at = currentDate;
 
     if(!this.created_at)
-        this.created_at = currentData;
+        this.created_at = currentDate;
 
-    if(this.name == null || this.code == null)
+    // if(!this.team_id)
+    //     this.team_id = uuidv4();
+
+    if(this.teamName == null)
         return resizeBy.json({success: false, message: 'Missing fields!'});
 
     next();

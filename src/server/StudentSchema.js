@@ -1,8 +1,9 @@
 var mongoose = require('mongoose'), 
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema
+    uuidv4 = require('uuid/v4');
 
 var studentSchema = new Schema({
-    userId: String, //uuid
+    user_id: String,
     firstName: String,
     lastName: String,
     userName: String,
@@ -10,7 +11,8 @@ var studentSchema = new Schema({
     Country: String,
     Zip: Number,
     email: String,
-    description: String
+    description: String,
+    team_id: String
 });
 
 // auto append update/created time fields
@@ -18,12 +20,13 @@ studentSchema.pre('save', function(next){
     var currentDate = new Date();
     this.updated_at = currentDate;
 
-
-
     if(!this.created_at)
-        this.created_at = currentData;
+        this.created_at = currentDate;
 
-    if(this.name == null || this.code == null)
+    // if(!this.user_id)
+    //     this.user_id = uuidv4();
+
+    if(this.userName == null || this.firstName == null || this.lastName)
         return resizeBy.json({success: false, message: 'Missing fields!'});
 
     next();
