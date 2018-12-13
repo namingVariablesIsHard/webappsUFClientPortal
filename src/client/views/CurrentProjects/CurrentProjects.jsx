@@ -131,10 +131,10 @@ class TableList extends React.Component {
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>{project.teamName}</h4>
-              {/* Must add back in when students actually exist in db */}
-              {/* {project.groupMembers.map((memberSet) =>{
-                return <p>{memberSet.name} - <a href="mailto:{memberSet.email}">{memberSet.email}</a></p>;
-              })} */}
+              {project.groupMembers &&
+                project.groupMembers.map((memberSet) =>{
+                return <p>{memberSet.firstName} {memberSet.lastName} - <a href="mailto:{memberSet.email}">{memberSet.email}</a></p>;
+              })}
               <p className={classes.cardCategory}>{project.description}</p>
               <a href="projectmanagement">
                 <Button color="primary">
