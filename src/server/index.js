@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 app.get("/api/getAllProposedProjects", projectController.getAllProposedProjects);
 app.get("/api/getAllCurrentProjects", projectController.getAllCurrentProjects);
-app.get("/api/getAllArchivedProject", projectController.getAllArchivedProject);
+app.get("/api/getAllArchivedProjects", projectController.getAllArchivedProjects);
 
 app.post("/api/addProjectProposal", projectController.addProjectProposal);
 

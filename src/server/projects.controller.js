@@ -76,14 +76,51 @@ exports.getAllCurrentProjects = async function(req, res) {
     }) 
 }
 
-exports.getAllArchivedProject = async function(req, res) {
-    myModel.find({"archiveDate": { $ne: null } }, function(err, projList){
+exports.getAllArchivedProjects = async function(req, res) {
+    // myModel.find({"archiveDate": { $ne: null } }, function(err, projList){
+    //     if(err){
+    //         res.send(err);
+    //     }
+    //     console.log(projList[0]);
+    //     res.json(projList);
+    // })
+    myModel.find({"archiveDate": { $ne: null }}).lean().exec(function(err, projList){
         if(err){
             res.send(err);
         }
         console.log(projList[0]);
-        res.json(projList);
-    })
+        // for each project add the associated team and team student
+        var totProjects = projList.length;
+        var currProjectIndex = 1;
+        var callbackFunc = () => {
+            // I'm sure there is a better fix for this but for now...
+            setTimeout(function() {
+                res.json(projList);
+            }, 150);
+        }
+        projList.forEach((project, index) => {
+            // fetch team details
+            Team.find({"proj_id": project._id}, function(err, currTeam){
+                if(err){
+                    res.send(err);
+                }
+                console.log(currTeam[0]);
+                projList[index].teamName = currTeam[0].teamName;
+                console.log(projList);
+                Student.find({"team_id": currTeam[0]._id}, function(err, studentList){
+                    if(err){
+                        res.send(err);
+                    }
+                    console.log(studentList);
+                    projList[index].groupMembers = studentList;
+                    if(++currProjectIndex === totProjects){
+                        console.log("callback triggered");
+                        callbackFunc();
+                    }
+                })
+            })
+        });
+    }) 
 }
 
 exports.getSelectedProject = async function(req, res) { //{_id: "something..."}
