@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import GridFS from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 // core components
-import Icon from '@material-ui/core/Icon';
-import Create from '@material-ui/icons/Create';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
 import CustomInput from '../../components/CustomInput/CustomInput.jsx';
@@ -113,9 +112,6 @@ class NewSurvey extends React.Component {
                       formControlProps={{
                         fullWidth: true
                       }}
-                      // inputProps={{
-                      //   disabled: true
-                      // }}
                     />
                   </GridItem>
                   <GridItem xs={12} sm={12} md={12}>

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GridFS from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
-import Grid from '@material-ui/core/Grid';
-import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
 import CustomInput from '../../components/CustomInput/CustomInput.jsx';
@@ -187,9 +185,6 @@ class EditProposal extends React.Component {
                   formControlProps={{
                     fullWidth: true
                   }}
-                  // inputProps={{
-                  //   disabled: true
-                  // }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>

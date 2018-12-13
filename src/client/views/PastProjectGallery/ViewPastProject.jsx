@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import Grid from '@material-ui/core/Grid';
-import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
 import Done from '@material-ui/icons/Done';
 import Clear from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
@@ -21,9 +19,10 @@ import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
 import Build from '@material-ui/icons/Build';
 
+// Style the modal
 function getModalStyle() {
-  const top = 50; // + rand();
-  const left = 50; // + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -103,8 +102,6 @@ class ViewPastProject extends React.Component {
     this.filterUpdate = this.filterUpdate.bind(this);
     this.initProjList();
   }
-
-  // const { classes } = this.props;
 
   initProjList = () => {
     // Replace with call to endpoint
@@ -186,6 +183,7 @@ class ViewPastProject extends React.Component {
                     </div>
                     
                   </Modal>
+                  {' '}
                 <a href="projectmanagement">
                   <Button color="success">
                     Team Chat

@@ -82,44 +82,44 @@ const styles = theme => ({
   }
 });
 
-const currencies = [
+const agreementLevels = [
   {
-    value: 'USD',
+    value: 'SA',
     label: 'Strongly Agree',
   },
   {
-    value: 'EUR',
+    value: 'A',
     label: 'Agree',
   },
   {
-    value: 'BTC',
+    value: 'N',
     label: 'Neutral',
   },
   {
-    value: 'JPY',
+    value: 'D',
     label: 'Disagree',
   },
   {
-    value: 'JPY',
+    value: 'SD',
     label: 'Strongly Disagree',
   },
 ];
 
-const currencies2 = [
+const projectNames = [
   {
-    value: 'USD',
+    value: 'CL',
     label: 'Car Loans',
   },
   {
-    value: 'EUR',
+    value: 'ND',
     label: 'National Defense',
   },
   {
-    value: 'BTC',
+    value: 'PS',
     label: 'Puppy Store',
   },
   {
-    value: 'JPY',
+    value: 'EMAP',
     label: 'Environmental Map',
   }
 ];
@@ -217,7 +217,7 @@ class TableList extends React.Component {
                 helperText="Want to work with"
                 margin="dense"
               >
-                {currencies.map(option => (
+                {agreementLevels.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
@@ -239,7 +239,7 @@ class TableList extends React.Component {
                 helperText="Project to work on"
                 margin="dense"
               >
-                {currencies2.map(option => (
+                {projectNames.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>

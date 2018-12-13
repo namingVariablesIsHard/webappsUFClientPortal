@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GridFS from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
-import Grid from '@material-ui/core/Grid';
-import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 import GridItem from '../../components/Grid/GridItem.jsx';
 import GridContainer from '../../components/Grid/GridContainer.jsx';
@@ -63,13 +62,7 @@ const styles = {
       fontWeight: '400',
       lineHeight: '1'
     }
-  },
-  // indentLvl0: {
-  //   margin: "0 auto"
-  // },
-  // indentLvl1: {
-  //   marginLeft: "50px"
-  // }
+  }
 };
 
 class TableList extends React.Component {
@@ -83,8 +76,6 @@ class TableList extends React.Component {
     this.filterUpdate = this.filterUpdate.bind(this);
     this.initProjList();
   }
-
-  // const { classes } = this.props;
 
   initProjList = () => {
     // // Replace with call to endpoint

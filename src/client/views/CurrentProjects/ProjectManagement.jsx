@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Gridfs from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import Grid from '@material-ui/core/Grid';
-import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
 import Done from '@material-ui/icons/Done';
 import Clear from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
@@ -23,13 +22,9 @@ import CardIcon from '../../components/Card/CardIcon.jsx';
 import Button from '../../components/CustomButtons/Button.jsx';
 import Build from '@material-ui/icons/Build';
 
-// function rand() {
-//   return Math.round(Math.random() * 20) - 10;
-// }
-
 function getModalStyle() {
-  const top = 50; // + rand();
-  const left = 50; // + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -97,6 +92,7 @@ const styles = theme => ({
   }
 });
 
+// TODO: Pull additional data functions
 class ProjectManagement extends React.Component {
   constructor(props) {
     super(props);
@@ -109,8 +105,6 @@ class ProjectManagement extends React.Component {
     this.filterUpdate = this.filterUpdate.bind(this);
     this.initProjList();
   }
-
-  // const { classes } = this.props;
 
   initProjList = () => {
     // Replace with call to endpoint
