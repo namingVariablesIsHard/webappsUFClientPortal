@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { any } from 'prop-types';
 import GridFS from 'gridfs-stream';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -89,43 +89,32 @@ class EditProposal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectList: [],
-      // Filter must be integrated into
-      filterText: ''
+      //selectedProjectID: "",
+      selectedProject: {
+        projTitle: "",
+        description: "",
+        featuresRequested: ""
+      }
     };
-    this.filterUpdate = this.filterUpdate.bind(this);
-    this.initProjList();
+    this.initDefaults();
   }
 
-  initProjList = () => {
-    // Replace with call to endpoint
-    const projArray = [];
-
-    // Example data (Note that the db should actually store as much info for the project as possible, but endpoints should only return what is necessary)
-    const firstProject = {
-      projTitle: 'Proposed project 1',
-      companyName: 'Sample Inc',
-      description: 'This is an example description of a team. This is an example description of a team. This is an example description of a team. This is an example description of a team.'
-    };
-    const secondProject = {
-      projTitle: 'Proposed project 2',
-      companyName: 'Fake LLC',
-      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
-    };
-    const thirdProject = {
-      projTitle: 'Proposed project 3',
-      companyName: 'Test Co.',
-      description: 'This is an example description of a project. This is an example description of a project. This is an example description of a project. This is an example description of a project.'
-    };
-    projArray.push(firstProject);
-    projArray.push(secondProject);
-    projArray.push(thirdProject);
-
-    this.state.projectList = projArray;
+  getProposalID = () => {
+    var currUrl = this.props.location.pathname;
+    var selectedID = currUrl.replace("/editproposal", "");
+    return selectedID
   }
 
-  filterUpdate(value) {
-    this.setState({ filterText: value });
+  initDefaults = () => {
+    var myID = this.getProposalID();
+    fetch(`/api/getSelectedProject?projid=${encodeURIComponent(myID)}`)
+      .then(results => {
+        if(results)
+          return results.json();
+      }).then(data => {
+        if(data)
+          this.setState({selectedProject: data});
+      })
   }
 
   render() {
@@ -137,12 +126,13 @@ class EditProposal extends React.Component {
             <h2 className={classes.cardTitleWhite}>Edit Proposal</h2>
           </CardHeader>
           <CardBody>
-
             <GridContainer>
+            {this.state.selectedProject.projTitle}
               <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
                   labelText="Project Name"
                   id="project-name"
+                  value={this.state.selectedProject.projTitle}
                   formControlProps={{
                     fullWidth: true
                   }}
@@ -301,7 +291,9 @@ class EditProposal extends React.Component {
             </GridContainer>
           </CardBody>
           <CardFooter>
-            <Button color="success">Save Changes</Button>
+            <a href="projectproposals">
+              <Button color="success">Save Changes</Button>
+            </a>
           </CardFooter>
         </Card>
       </GridItem>

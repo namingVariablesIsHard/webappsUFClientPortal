@@ -24,6 +24,9 @@ exports.getAllProposedProjects = async function(req, res) {
     //Team.create({"teamName": "Group-B", "description": "Group of 5 experienced, a lot of PHP experience.", "proj_id": ObjectId("5c1192c61912af48fc58ff7e")});
     //Team.create({"teamName": "Group-C", "description": "Only one individual, suitable for a small project.", "proj_id": ObjectId("5c11953dfea4e54e98a1da38")});
 
+    //To initialize some students
+    //Student.create({"firstName": "Bob", "lastName": "Vance", "userName": "Bobby", "city": "Sarasota", "country": "US", "zip": 34233, "email": "Bob@gmail.com", "description": "Some experience in Web Development", "team_id": ObjectId("5c11b60d3eae2f5464108b18")});
+
     myModel.find({"started": false}, function(err, projList){
         if(err){
             res.send(err);
@@ -41,7 +44,13 @@ exports.getAllCurrentProjects = async function(req, res) {
         console.log(projList[0]);
         // for each project add the associated team and team student
         var totProjects = projList.length;
-        var callbackFunc = () => {res.json(projList);}
+        var currProjectIndex = 1;
+        var callbackFunc = () => {
+            // I'm sure there is a better fix for this but for now...
+            setTimeout(function() {
+                res.json(projList);
+            }, 150);
+        }
         projList.forEach((project, index) => {
             // fetch team details
             Team.find({"proj_id": project._id}, function(err, currTeam){
@@ -51,35 +60,75 @@ exports.getAllCurrentProjects = async function(req, res) {
                 console.log(currTeam[0]);
                 projList[index].teamName = currTeam[0].teamName;
                 console.log(projList);
-                Student.find({"team_id": currTeam._id}, function(err, studentList){
+                Student.find({"team_id": currTeam[0]._id}, function(err, studentList){
                     if(err){
                         res.send(err);
                     }
                     console.log(studentList);
                     projList[index].groupMembers = studentList;
-                    if(index + 1 === totProjects)
+                    if(++currProjectIndex === totProjects){
+                        console.log("callback triggered");
                         callbackFunc();
+                    }
                 })
             })
         });
     }) 
 }
 
-exports.getAllArchivedProject = async function(req, res) {
-    myModel.find({"archiveDate": { $ne: null } }, function(err, projList){
+exports.getAllArchivedProjects = async function(req, res) {
+    // myModel.find({"archiveDate": { $ne: null } }, function(err, projList){
+    //     if(err){
+    //         res.send(err);
+    //     }
+    //     console.log(projList[0]);
+    //     res.json(projList);
+    // })
+    myModel.find({"archiveDate": { $ne: null }}).lean().exec(function(err, projList){
         if(err){
             res.send(err);
         }
         console.log(projList[0]);
-        res.json(projList);
-    })
+        // for each project add the associated team and team student
+        var totProjects = projList.length;
+        var currProjectIndex = 1;
+        var callbackFunc = () => {
+            // I'm sure there is a better fix for this but for now...
+            setTimeout(function() {
+                res.json(projList);
+            }, 150);
+        }
+        projList.forEach((project, index) => {
+            // fetch team details
+            Team.find({"proj_id": project._id}, function(err, currTeam){
+                if(err){
+                    res.send(err);
+                }
+                console.log(currTeam[0]);
+                projList[index].teamName = currTeam[0].teamName;
+                console.log(projList);
+                Student.find({"team_id": currTeam[0]._id}, function(err, studentList){
+                    if(err){
+                        res.send(err);
+                    }
+                    console.log(studentList);
+                    projList[index].groupMembers = studentList;
+                    if(++currProjectIndex === totProjects){
+                        console.log("callback triggered");
+                        callbackFunc();
+                    }
+                })
+            })
+        });
+    }) 
 }
 
 exports.getSelectedProject = async function(req, res) { //{_id: "something..."}
-    myModel.findOne({proj_id : req.query.proj_id}, function(err, proj){
+    myModel.findOne({_id : req.query.projid}, function(err, proj){
         if(err){
             res.send(err);
         }
+        console.log(req.query.projid);
         console.log(proj);
         res.json(proj);
     })

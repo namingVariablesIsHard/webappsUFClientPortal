@@ -82,10 +82,10 @@ class Surveys extends React.Component {
                   tableHeaderColor="success"
                   tableHead={['#', 'Name', 'Team Members', 'Completed on', 'Complete Survey', 'View Project', 'Archive']}
                   tableData={[
-                    ['1', 'Candy Labeling Visualizer', '3', 'October 15th, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <Archive />],
-                    ['2', 'Marble Table Local Polishing Service', '4', 'May 1st, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <Archive />],
-                    ['3', 'Bandwith Reduction Test', '2','June 1st, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <Archive />],
-                    ['4', 'National Defense Spending Tracker', '2', 'January 15th, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <Archive />]
+                    ['1', 'Candy Labeling Visualizer', '3', 'October 15th, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <a href='pastprojectgallery'> <Archive /></a>],
+                    ['2', 'Marble Table Local Polishing Service', '4', 'May 1st, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <a href='pastprojectgallery'> <Archive /></a>],
+                    ['3', 'Bandwith Reduction Test', '2','June 1st, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <a href='pastprojectgallery'> <Archive /></a>],
+                    ['4', 'National Defense Spending Tracker', '2', 'January 15th, 2018', <a href='newsurvey'> <ArrowUpward /> </a>, <a href='projectmanagement'> <KeyboardArrowRight /></a>, <a href='pastprojectgallery'> <Archive /></a>]
                   ]}
                 />
               </CardBody>
@@ -107,9 +107,9 @@ class Surveys extends React.Component {
                   tableHeaderColor="success"
                   tableHead={['#', 'Name', 'Project Name', 'Submitted on', 'Review', 'Delete']}
                   tableData={[
-                    ['1', 'Christopher Nolan', 'Candy Labeling Visualizer', 'October 21st @ 21:34 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <Clear />],
-                    ['2', 'Hussan Keibotep', 'Marble Table Local Polishing Service', 'May 13th @ 14:22 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <Clear />],
-                    ['3', 'Rachel Knowlingsby', 'Bandwith Reduction Test', 'June 14th @ 4:33 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <Clear />]
+                    ['1', 'Christopher Nolan', 'Candy Labeling Visualizer', 'October 21st @ 21:34 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <a href='surveys'> <Clear /></a>],
+                    ['2', 'Hussan Keibotep', 'Marble Table Local Polishing Service', 'May 13th @ 14:22 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <a href='surveys'> <Clear /></a>],
+                    ['3', 'Rachel Knowlingsby', 'Bandwith Reduction Test', 'June 14th @ 4:33 GMT', <a href='surveyresults'><KeyboardArrowRight /></a>, <a href='surveys'> <Clear /></a>]
                   ]}
                 />
               </CardBody>
