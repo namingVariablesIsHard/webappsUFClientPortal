@@ -120,7 +120,7 @@ class TableList extends React.Component {
             <CardBody>
               <h4 className={classes.cardTitle}>{project.companyName}</h4>
               <p>{project.description}</p>
-              <a href="editproposal">
+              <a href={`editproposal${project._id}`}>
                 <Button color="rose">
                   Edit Proposal
                 </Button>

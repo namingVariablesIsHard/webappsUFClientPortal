@@ -115,14 +115,14 @@ const dashboardRoutes = [
     component: NewProposal
   },
   {
-    path: '/editproposal',
+    path: '/editproposal:projectID',
     sidebarName: 'Edit Proposal',
     navbarName: 'Edit a Proposal',
     icon: Propose,
     component: EditProposal
   },
   {
-    path: '/editproposal/:projectID',
+    path: '/editproposal:projectID',
     sidebarName: 'Edit Proposal',
     navbarName: 'Edit a Proposal',
     icon: Propose,
