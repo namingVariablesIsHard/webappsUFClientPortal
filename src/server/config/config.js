@@ -5,6 +5,6 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://cenapp:DfAyE88w1FE5XKTx17AR@ds131954.mlab.com:31954/cen-project'// place the URI of your mongo database here.
+    uri: ''// place the URI of your mongo database here.
   },
 };
